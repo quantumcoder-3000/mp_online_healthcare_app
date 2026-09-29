@@ -13,6 +13,7 @@ import {
   Truck,
   AlertTriangle,
   LayoutDashboard,
+  FileText
 } from "lucide-react";
 
 export const Header: React.FC = () => {
@@ -20,6 +21,8 @@ export const Header: React.FC = () => {
   const { runEmergencyDemo, resetDemo, activeEmergency, isRoutingLoading } = useCareFlow();
 
   const navLinks = [
+    { href: "/voice", label: "Voice Intake (Gemini Live)", icon: Radio },
+    { href: "/prescription", label: "Prescription & Pharmacy", icon: FileText },
     { href: "/command-center", label: "Command Center", icon: LayoutDashboard },
     { href: "/hospital", label: "Hospital Ops", icon: Building2 },
     { href: "/ambulance", label: "Ambulance Fleet", icon: Truck },
