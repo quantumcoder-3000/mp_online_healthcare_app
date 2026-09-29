@@ -1,0 +1,39 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Doctor {
+  id                  String   @id @default(uuid())
+  name                String
+  specialty           String
+  qualification       String?
+  experienceYears     Int?
+  registrationRef     String?
+  facility            String?
+  city                String?
+  languages           String?  // Comma separated
+  consultationTypes   String?  // VIRTUAL, PHYSICAL, or BOTH
+  availabilitySource  String?  // DEMO, PROVIDER
+  verificationStatus  String?  // DEMO, REGISTRY_REFERENCED
+  latitude            Float?
+  longitude           Float?
+}
+
+model Appointment {
+  id                 String   @id @default(uuid())
+  patientId          String
+  doctorId           String
+  consultationType   String   // VIRTUAL, PHYSICAL
+  date               String
+  startTime          String
+  status             String   // REQUESTED, CONFIRMED, COMPLETED, CANCELLED, DEMO_BOOKING
+  meetingRoomId      String?
+  availabilitySource String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}

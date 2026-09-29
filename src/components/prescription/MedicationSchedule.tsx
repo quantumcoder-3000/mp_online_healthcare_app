@@ -8,7 +8,11 @@ function TimeEditor({ doseId, initialTime, onSave }: { doseId: string, initialTi
   const [time, setTime] = useState(initialTime);
 
   useEffect(() => {
-    setTime(initialTime);
+    // Synchronize state avoiding synchronous cascading renders if initialTime changes
+    const timer = setTimeout(() => {
+      setTime(initialTime);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [initialTime]);
 
   const handleBlur = () => {

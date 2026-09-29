@@ -157,7 +157,7 @@ export function UploadPrescription() {
               <div className="min-w-0 flex-1 pr-6">
                 <p className="text-sm font-medium text-slate-200 truncate">{file.name}</p>
                 <p className="text-xs text-slate-500 mt-1">
-                  {(file.size / 1024 / 1024).toFixed(2)} MB • {file.type || 'Unknown type'}
+                  {(file.size / 1024 / 1024).toFixed(2)} MB â€¢ {file.type || 'Unknown type'}
                 </p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export function UploadPrescription() {
                 {isAnalyzing ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Analyzing with Gemini...
+                    Analyzing with AI...
                   </>
                 ) : (
                   <>

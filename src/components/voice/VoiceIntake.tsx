@@ -74,7 +74,11 @@ function ConversationPanel({ conversation }: { conversation: VoiceMessage[] }) {
       <div className="conversation-list">
         {conversation.length === 0 ? (
           <div className="empty-conversation">
-            <div className="empty-icon">◌</div>
+            <div className="empty-icon flex justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-slate-800/50 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-cyan-900/50 shadow-[0_0_15px_rgba(34,211,238,0.2)] animate-pulse" />
+              </div>
+            </div>
             <p>Start a conversation to begin patient intake.</p>
             <small>Try English, Hindi, or Hinglish.</small>
           </div>
@@ -114,12 +118,14 @@ function VoiceControls({
   onClear: () => void;
 }) {
   const active = state === "listening" || state === "speaking";
-  const busy = state === "connecting";
+  const busy = state === "Connecting...";
 
   return (
     <div className="voice-control-stack">
       <div className={`voice-orb ${active ? "active" : ""} ${state}`}>
-        <div className="orb-core">{active ? "◉" : "◌"}</div>
+        <div className="orb-core flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.8)] animate-pulse" />
+        </div>
         <div className="orb-ring ring-a" />
         <div className="orb-ring ring-b" />
         <div className="orb-ring ring-c" />
@@ -136,14 +142,14 @@ function VoiceControls({
               ? "CareFlow is responding. You can speak naturally and interrupt."
               : "Speak naturally. CareFlow is listening."
             : busy
-              ? "Opening a secure Gemini Live session…"
+              ? "Opening a secure Voice session..."
               : "Your microphone is off."}
         </span>
       </div>
 
       {active || busy ? (
         <button className="secondary-button danger" type="button" onClick={onStop} disabled={busy}>
-          {busy ? "Connecting…" : "End conversation"}
+          {busy ? "Connecting..." : "End conversation"}
         </button>
       ) : (
         <div className="voice-actions-row">
@@ -252,29 +258,25 @@ export function VoiceIntake() {
   }
 
   return (
-    <div className="voice-page">
-      <div className="hero-panel">
-        <div className="hero-copy">
-          <p className="eyebrow">CAREFLOW • GEMINI VOICE INTAKE</p>
-          <h1>Turn a spoken story into a clear patient handoff.</h1>
-          <p className="hero-subtitle">
-            Speak naturally. Gemini handles realtime voice conversation and CareFlow prepares structured intake information for human clinical review.
+    <div className="voice-page-embedded w-full max-w-6xl mx-auto">
+      <div className="flex flex-col items-center py-8">
+        <div className="text-center mb-8">
+          <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">VOICE INTAKE</p>
+          <h2 className="text-3xl font-bold text-white mb-3">Speak naturally.</h2>
+          <p className="text-slate-400 text-sm max-w-lg mx-auto">
+            Describe your symptoms. The AI handles the real-time conversation and CareFlow prepares a structured patient handoff.
           </p>
-          <div className="hero-badges">
-            <span>Gemini Live</span>
-            <span>English / Hindi / Hinglish</span>
-            <span>AI-assisted</span>
-            <span>Human review</span>
-          </div>
         </div>
 
-        <div className="voice-card">
-          <div className="voice-card-top">
+        <div className="w-full max-w-xl mx-auto bg-[#0f0f0f] border border-slate-800 rounded-3xl p-6 shadow-2xl">
+          <div className="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
             <div>
-              <p className="eyebrow">VOICE SESSION</p>
-              <h2>Patient intake</h2>
+              <h3 className="font-bold text-white text-lg">Patient Intake Session</h3>
             </div>
-            <div className="secure-mark">● Ephemeral session</div>
+            <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-900/50 px-2 py-1 rounded-full flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Secure & Ephemeral
+            </span>
           </div>
 
           <VoiceControls
@@ -300,11 +302,11 @@ export function VoiceIntake() {
           <div className="workflow-list">
             <div className="workflow-step active">
               <b>01</b>
-              <div><strong>Listen</strong><span>Gemini Live receives microphone audio in realtime.</span></div>
+              <div><strong>Listen</strong><span>The AI receives microphone audio in realtime.</span></div>
             </div>
             <div className="workflow-step">
               <b>02</b>
-              <div><strong>Understand</strong><span>Gemini asks concise follow-ups and organizes the patient&apos;s story.</span></div>
+              <div><strong>Understand</strong><span>The AI asks concise follow-ups and organizes the patient&apos;s story.</span></div>
             </div>
             <div className="workflow-step">
               <b>03</b>
