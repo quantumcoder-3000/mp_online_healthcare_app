@@ -1,15 +1,29 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CareFlowProvider } from "@/context/CareFlowContext";
+import { Header } from "@/components/common/Header";
 
 export const metadata: Metadata = {
-  title: "CareFlow — Voice Intake",
-  description: "CareFlow healthcare orchestration prototype — voice intake module.",
+  title: "CareFlow — Emergency Healthcare Network & Destination Intelligence",
+  description:
+    "Real Google Maps routing, traffic-aware ETA calculation, and deterministic hospital destination recommendation.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="dark">
+      <body className="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased">
+        <CareFlowProvider>
+          <Header />
+          <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+            {children}
+          </main>
+        </CareFlowProvider>
+      </body>
     </html>
   );
 }

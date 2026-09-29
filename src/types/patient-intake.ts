@@ -15,4 +15,20 @@ export interface PatientIntake {
   allergies: string[];
   additional_information: string[];
   summary: string;
+
+  // Added for ambulance module integration
+  caseId?: string;
+  callerRole?: "ASHA" | "FAMILY" | "BYSTANDER" | "FIRST_RESPONDER";
+  chiefComplaint?: string;
+  vitalSigns?: {
+    heartRate?: number;
+    systolicBP?: number;
+    diastolicBP?: number;
+    oxygenSaturation?: number;
+    gcs?: number; // Glasgow Coma Scale
+  };
+  suspectedCondition?: "STROKE" | "CARDIAC_ARREST" | "TRAUMA" | "RESPIRATORY" | "MATERNAL";
+  location?: { latitude: number; longitude: number };
+  locationDescription?: string;
+  reportedAt?: string;
 }

@@ -3,6 +3,7 @@
 import React from "react";
 
 import { GeminiLiveClient } from "@/lib/gemini/live-client";
+import { useCareFlow } from "@/context/CareFlowContext";
 import type { VoiceMessage, VoiceSessionState } from "@/types/live";
 import type { PatientIntake } from "@/types/patient-intake";
 
@@ -161,6 +162,7 @@ function VoiceControls({
 }
 
 export function VoiceIntake() {
+  const { processEmergency } = useCareFlow();
   const [state, setState] = React.useState<VoiceSessionState>("idle");
   const [conversation, setConversation] = React.useState<VoiceMessage[]>([]);
   const [intake, setIntake] = React.useState<PatientIntake | null>(null);
@@ -241,6 +243,8 @@ export function VoiceIntake() {
 
       setIntake(payload.data);
       setSummaryStatus("idle");
+      // Trigger dynamic integration!
+      processEmergency(payload.data);
     } catch (error) {
       setSummaryStatus("error");
       setSummaryError(error instanceof Error ? error.message : "Unable to create intake summary.");
