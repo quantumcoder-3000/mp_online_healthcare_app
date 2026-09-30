@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import { GeminiLiveClient } from "@/lib/gemini/live-client";
 import { useCareFlow } from "@/context/CareFlowContext";
@@ -168,6 +169,7 @@ function VoiceControls({
 }
 
 export function VoiceIntake() {
+  const router = useRouter();
   const { processEmergency } = useCareFlow();
   const [state, setState] = React.useState<VoiceSessionState>("idle");
   const [conversation, setConversation] = React.useState<VoiceMessage[]>([]);
@@ -250,7 +252,7 @@ export function VoiceIntake() {
       setIntake(payload.data);
       setSummaryStatus("idle");
       // Trigger dynamic integration!
-      processEmergency(payload.data);
+      if (payload.data.is_emergency) { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
     } catch (error) {
       setSummaryStatus("error");
       setSummaryError(error instanceof Error ? error.message : "Unable to create intake summary.");

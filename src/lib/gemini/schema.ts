@@ -38,6 +38,7 @@ export const patientIntakeSchema = {
       items: { type: "string" },
     },
     summary: { type: "string" },
+    is_emergency: { type: "boolean", description: "Set to true if the symptoms or request indicate a severe medical emergency requiring an immediate ambulance (e.g. stroke, heart attack, trauma, or user explicitly asking for ambulance)." },
   },
   required: [
     "patient_name",
@@ -53,5 +54,6 @@ export const patientIntakeSchema = {
     "allergies",
     "additional_information",
     "summary",
+    "is_emergency",
   ],
 };
