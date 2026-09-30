@@ -72,9 +72,9 @@ export const Header: React.FC = () => {
                 <Link
                   key={href}
                   href={href}
-                  className={px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors }
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors ${isActive ? "bg-slate-800 text-white font-semibold border border-slate-700 shadow-sm" : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"}`}
                 >
-                  <Icon className={w-3.5 h-3.5 } />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
                   <span>{label}</span>
                   {href === "/emergency" && activeEmergency && (
                     <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
@@ -141,9 +141,9 @@ export const Header: React.FC = () => {
                     key={href}
                     href={href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 transition-colors }
+                    className={`px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 transition-colors ${isActive ? "bg-slate-800 text-white font-semibold border border-slate-700 shadow-sm" : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"}`}
                   >
-                    <Icon className={w-5 h-5 } />
+                    <Icon className={`w-5 h-5 ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
                     <span>{label}</span>
                     {href === "/emergency" && activeEmergency && (
                       <span className="w-2 h-2 rounded-full bg-red-500 animate-ping ml-auto" />
