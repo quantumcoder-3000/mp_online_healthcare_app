@@ -41,13 +41,13 @@ export const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Logo / Brand */}
           <div className="flex items-center gap-6">
-            <Link href="/command-center" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-cyan-950 ring-1 ring-cyan-400/40">
+            <Link href="/command-center" className="flex items-center gap-2.5 group transition-transform hover:scale-105 active:scale-95 duration-200">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(8,145,178,0.4)] ring-1 ring-cyan-400/50 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.6)] transition-all">
                 <Activity className="w-5 h-5" />
               </div>
               <div className="hidden sm:block">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-extrabold text-white tracking-wider text-base">AROGYAGRID</span>
+                  <span className="font-extrabold text-white tracking-wider text-base group-hover:text-cyan-400 transition-colors">AROGYAGRID</span>
                   <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">
                     INTELLIGENCE
                   </span>
@@ -66,12 +66,16 @@ export const Header: React.FC = () => {
                   <Link
                     key={href}
                     href={href}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors ${isActive ? "bg-slate-800 text-white font-semibold border border-slate-700 shadow-sm" : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"}`}
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ease-out transform hover:scale-105 active:scale-95 ${
+                      isActive 
+                        ? "bg-cyan-950/50 text-cyan-50 border border-cyan-700/50 shadow-[0_0_12px_rgba(34,211,238,0.15)] ring-1 ring-cyan-500/30" 
+                        : "text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent hover:border-slate-700"
+                    }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
+                    <Icon className={`w-3.5 h-3.5 transition-colors ${isActive ? "text-cyan-400" : "text-slate-500 group-hover:text-cyan-300"}`} />
                     <span>{label}</span>
                     {href === "/emergency" && activeEmergency && (
-                      <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                      <span className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute -top-1 -right-1" />
                     )}
                   </Link>
                 );
@@ -83,16 +87,16 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setShowQR(true)}
-              className="hidden sm:flex px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs items-center gap-1.5 shadow-lg border border-slate-700 transition-all hover:scale-105 active:scale-95"
+              className="hidden sm:flex px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs items-center gap-1.5 shadow-lg border border-slate-700 transition-all hover:scale-105 hover:border-slate-500 active:scale-95"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
               <span>App</span>
             </button>
 
             <button
               onClick={() => runEmergencyDemo()}
               disabled={isRoutingLoading}
-              className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-950/80 transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-emerald-950 font-bold text-xs flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] border border-emerald-400/50 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               <span className="hidden sm:inline">{isRoutingLoading ? "Computing Routing..." : "Run Emergency Demo"}</span>
@@ -101,7 +105,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={resetDemo}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 text-xs transition-colors"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-red-950/50 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-900/50 text-xs transition-all hover:rotate-180 active:scale-95"
               title="Reset Demo"
             >
               <RotateCcw className="w-4 h-4" />
@@ -110,12 +114,12 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile Horizontal Scrolling Nav */}
-        <nav className="lg:hidden border-t border-slate-800 bg-slate-900/50 overflow-x-auto no-scrollbar py-2">
-          <div className="flex items-center gap-2 px-4 min-w-max">
+        <nav className="lg:hidden border-t border-slate-800 bg-slate-900/80 backdrop-blur-md overflow-x-auto no-scrollbar py-2.5">
+          <div className="flex items-center gap-2.5 px-4 min-w-max">
             {/* Get App Mobile Button */}
             <button
               onClick={() => setShowQR(true)}
-              className="px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors bg-cyan-900/30 text-cyan-400 border border-cyan-800/50 mr-2"
+              className="px-3.5 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all transform hover:scale-105 active:scale-95 bg-cyan-900/40 text-cyan-300 border border-cyan-700/60 shadow-[0_0_10px_rgba(34,211,238,0.1)] mr-1"
             >
               <Download className="w-3.5 h-3.5" />
               <span>App</span>
@@ -126,12 +130,16 @@ export const Header: React.FC = () => {
                 <Link
                   key={href}
                   href={href}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap ${isActive ? "bg-slate-800 text-white font-semibold border border-slate-700 shadow-sm" : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"}`}
+                  className={`relative px-3.5 py-2 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ease-out transform hover:scale-105 active:scale-95 whitespace-nowrap ${
+                    isActive 
+                      ? "bg-cyan-950/50 text-cyan-50 border border-cyan-700/50 shadow-[0_0_12px_rgba(34,211,238,0.15)] ring-1 ring-cyan-500/30" 
+                      : "text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent hover:border-slate-700"
+                  }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
+                  <Icon className={`w-3.5 h-3.5 transition-colors ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
                   <span>{label}</span>
                   {href === "/emergency" && activeEmergency && (
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping ml-auto" />
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute -top-1 -right-1" />
                   )}
                 </Link>
               );
@@ -147,17 +155,17 @@ export const Header: React.FC = () => {
           <div className="relative bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-in zoom-in-95 duration-200">
             <button 
               onClick={() => setShowQR(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 p-1.5 rounded-lg transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-1.5 rounded-lg transition-colors active:scale-90"
             >
               <X className="w-5 h-5" />
             </button>
-            <div className="w-16 h-16 bg-gradient-to-tr from-cyan-600 to-emerald-500 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg">
+            <div className="w-16 h-16 bg-gradient-to-tr from-cyan-600 to-emerald-500 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg animate-bounce">
               <Smartphone className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">Download ArogyaGrid</h3>
             <p className="text-slate-400 text-sm mb-6">Scan this QR code with your phone camera to download and install the official Android App.</p>
             
-            <div className="bg-white p-4 rounded-xl inline-block mx-auto mb-6 shadow-inner">
+            <div className="bg-white p-4 rounded-xl inline-block mx-auto mb-6 shadow-inner transform transition-transform hover:scale-105 duration-300">
               <img 
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://mp-online-healthcare-app.vercel.app/ArogyaGrid.apk`} 
                 alt="Download APK QR Code"
@@ -168,7 +176,7 @@ export const Header: React.FC = () => {
             <a 
               href="/ArogyaGrid.apk" 
               download
-              className="block w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all shadow-lg shadow-cyan-900/50"
+              className="block w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-bold transition-all shadow-[0_0_15px_rgba(8,145,178,0.4)] hover:shadow-[0_0_25px_rgba(8,145,178,0.6)] transform hover:-translate-y-1 active:translate-y-0"
             >
               Download .APK Directly
             </a>
