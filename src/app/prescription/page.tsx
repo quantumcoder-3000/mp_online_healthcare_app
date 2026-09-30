@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { usePrescription } from "@/context/PrescriptionContext";
 import { UploadPrescription } from "@/components/prescription/UploadPrescription";
 import { VerificationView } from "@/components/prescription/VerificationView";
 import { MedicationSchedule } from "@/components/prescription/MedicationSchedule";
 import { PharmacyDiscovery } from "@/components/prescription/PharmacyDiscovery";
+import { LabDiscovery } from "@/components/prescription/LabDiscovery";
 import { RefreshCw } from "lucide-react";
 
 export default function PrescriptionWorkflowPage() {
   const { 
     extractedPrescription, 
     isVerified, 
-    schedule,
     resetPrescriptionWorkflow 
   } = usePrescription();
 
@@ -21,10 +21,10 @@ export default function PrescriptionWorkflowPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
-            Prescription & Pharmacy
+            Prescription & Diagnostics
           </h1>
           <p className="text-sm text-slate-400 mt-1">
-            Upload a prescription, verify medications, and find nearby pharmacies.
+            Upload a prescription, verify medications, and find nearby pharmacies or diagnostic labs.
           </p>
         </div>
         <button
@@ -41,9 +41,14 @@ export default function PrescriptionWorkflowPage() {
       ) : !isVerified ? (
         <VerificationView />
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <MedicationSchedule />
-          <PharmacyDiscovery />
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <MedicationSchedule />
+            <PharmacyDiscovery />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <LabDiscovery />
+          </div>
         </div>
       )}
     </div>

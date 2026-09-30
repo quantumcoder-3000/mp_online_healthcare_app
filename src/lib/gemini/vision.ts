@@ -26,10 +26,34 @@ const prescriptionSchema: Schema = {
           route: { type: Type.STRING, nullable: true },
           instructions: { type: Type.STRING, nullable: true },
           confidence: { type: Type.NUMBER },
+              tests: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          name: { type: Type.STRING },
+          reason: { type: Type.STRING, nullable: true },
           needsVerification: { type: Type.BOOLEAN },
+        },
+        required: ["name", "needsVerification"],
+      },
+    },
+    needsVerification: { type: Type.BOOLEAN },
           sourceText: { type: Type.STRING },
         },
         required: ["confidence", "needsVerification", "sourceText"],
+      },
+    },
+        tests: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          name: { type: Type.STRING },
+          reason: { type: Type.STRING, nullable: true },
+          needsVerification: { type: Type.BOOLEAN },
+        },
+        required: ["name", "needsVerification"],
       },
     },
     needsVerification: { type: Type.BOOLEAN },

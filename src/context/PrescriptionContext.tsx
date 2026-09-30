@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, ReactNode, useCallback } from "react";
 import { 
   ExtractedPrescription, 
-  ConfirmedMedication, 
+  ConfirmedMedication, ConfirmedTest, 
   ScheduledDose,
   Pharmacy
 } from "../types/prescription";
@@ -16,6 +16,8 @@ interface PrescriptionContextType {
   
   // Verification State
   confirmedMedications: ConfirmedMedication[];
+  confirmedTests: ConfirmedTest[];
+  setConfirmedTests: (t: ConfirmedTest[]) => void;
   setConfirmedMedications: (m: ConfirmedMedication[]) => void;
   isVerified: boolean;
   setIsVerified: (v: boolean) => void;
@@ -43,6 +45,7 @@ export const PrescriptionProvider = ({ children }: { children: ReactNode }) => {
   );
   const [extractedPrescription, setExtractedPrescription] = useState<ExtractedPrescription | null>(null);
   const [confirmedMedications, setConfirmedMedications] = useState<ConfirmedMedication[]>([]);
+  const [confirmedTests, setConfirmedTests] = useState<ConfirmedTest[]>([]);
   const [isVerified, setIsVerified] = useState(false);
   const [schedule, setSchedule] = useState<ScheduledDose[]>([]);
   const [nearbyPharmacies, setNearbyPharmacies] = useState<Pharmacy[]>([]);
@@ -59,6 +62,7 @@ export const PrescriptionProvider = ({ children }: { children: ReactNode }) => {
   const resetPrescriptionWorkflow = useCallback(() => {
     setExtractedPrescription(null);
     setConfirmedMedications([]);
+    setConfirmedTests([]);
     setIsVerified(false);
     setSchedule([]);
     setNearbyPharmacies([]);
@@ -73,6 +77,8 @@ export const PrescriptionProvider = ({ children }: { children: ReactNode }) => {
         setExtractedPrescription,
         confirmedMedications,
         setConfirmedMedications,
+        confirmedTests,
+        setConfirmedTests,
         isVerified,
         setIsVerified,
         schedule,

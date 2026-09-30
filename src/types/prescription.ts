@@ -12,6 +12,13 @@ export interface RawMedication {
   sourceText: string;
 }
 
+export interface DiagnosticTest {
+  id: string;
+  name: string;
+  reason: string | null;
+  needsVerification: boolean;
+}
+
 export interface ExtractedPrescription {
   prescriptionId: string;
   analyzedAt: string;
@@ -20,6 +27,7 @@ export interface ExtractedPrescription {
   prescriptionDate: string | null;
   notes: string | null;
   medications: RawMedication[];
+  tests?: DiagnosticTest[];
   needsVerification: boolean;
 }
 
@@ -32,6 +40,13 @@ export interface ConfirmedMedication {
   duration: string;
   route: string;
   instructions: string;
+}
+
+export interface ConfirmedTest {
+  id: string;
+  name: string;
+  reason: string;
+  reportUploaded: boolean;
 }
 
 export type ReminderStatus = "UPCOMING" | "TAKEN" | "MISSED" | "SNOOZED";
