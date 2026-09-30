@@ -54,7 +54,7 @@ function IntakeCard({ intake }: { intake: PatientIntake }) {
       </div>
 
       <div className="safety-note">
-        This information is AI-generated from the conversation. Verify it with the patient and a qualified healthcare professional. CareFlow does not make a diagnosis in this module.
+        This information is AI-generated from the conversation. Verify it with the patient and a qualified healthcare professional. ArogyaGrid does not make a diagnosis in this module.
       </div>
     </section>
   );
@@ -86,7 +86,7 @@ function ConversationPanel({ conversation }: { conversation: VoiceMessage[] }) {
           conversation.map((message) => (
             <div className={`message ${message.role}`} key={message.id}>
               <div className="message-role">
-                {message.role === "user" ? "PATIENT / ASHA" : "CAREFLOW"}
+                {message.role === "user" ? "PATIENT / ASHA" : "SAARTHI"}
               </div>
               <p>{message.content}</p>
             </div>
@@ -101,7 +101,7 @@ const stateLabels: Record<VoiceSessionState, string> = {
   idle: "READY",
   connecting: "CONNECTING",
   listening: "LISTENING",
-  speaking: "CAREFLOW SPEAKING",
+  speaking: "SAARTHI SPEAKING",
   error: "ERROR",
   ended: "ENDED",
 };
@@ -139,8 +139,8 @@ function VoiceControls({
         <span>
           {active
             ? state === "speaking"
-              ? "CareFlow is responding. You can speak naturally and interrupt."
-              : "Speak naturally. CareFlow is listening."
+              ? "Saarthi AI is responding. You can speak naturally and interrupt."
+              : "Speak naturally. Saarthi AI is listening."
             : busy
               ? "Opening a secure Voice session..."
               : "Your microphone is off."}
@@ -222,7 +222,7 @@ export function VoiceIntake() {
 
   async function generateSummary() {
     const transcript = conversation
-      .map((entry) => `${entry.role === "user" ? "USER" : "CAREFLOW"}: ${entry.content}`)
+      .map((entry) => `${entry.role === "user" ? "USER" : "SAARTHI"}: ${entry.content}`)
       .join("\n");
 
     if (!transcript.trim()) return;
@@ -264,7 +264,7 @@ export function VoiceIntake() {
           <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">VOICE INTAKE</p>
           <h2 className="text-3xl font-bold text-white mb-3">Speak naturally.</h2>
           <p className="text-slate-400 text-sm max-w-lg mx-auto">
-            Describe your symptoms. The AI handles the real-time conversation and CareFlow prepares a structured patient handoff.
+            Describe your symptoms. The AI handles the real-time conversation and ArogyaGrid prepares a structured patient handoff.
           </p>
         </div>
 

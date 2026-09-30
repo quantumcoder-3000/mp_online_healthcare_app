@@ -5,7 +5,7 @@ import { PrescriptionProvider } from "@/context/PrescriptionContext";
 import { Header } from "@/components/common/Header";
 
 export const metadata: Metadata = {
-  title: "CareFlow — Emergency Healthcare Network & Destination Intelligence",
+  title: "ArogyaGrid - Emergency Healthcare Network & Destination Intelligence",
   description:
     "Real Google Maps routing, traffic-aware ETA calculation, and deterministic hospital destination recommendation.",
 };

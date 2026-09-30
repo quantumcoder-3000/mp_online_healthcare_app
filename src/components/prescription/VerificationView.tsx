@@ -114,7 +114,7 @@ export function VerificationView() {
             <FileCheck2 className="w-5 h-5 text-cyan-400" />
             Prescription Review
           </h2>
-          <p className="text-xs text-slate-400 mt-1">Prescription information extracted using CareFlow AI. Please verify the extracted details.</p>
+          <p className="text-xs text-slate-400 mt-1">Prescription information extracted using Saarthi AI. Please verify the extracted details.</p>
         </div>
         
         {unverifiedCount > 0 && (

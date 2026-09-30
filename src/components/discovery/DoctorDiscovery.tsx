@@ -164,7 +164,7 @@ export const DoctorDiscovery = () => {
               <div className="p-4 space-y-4">
                 <div className="space-y-2 text-sm text-slate-400">
                   <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-slate-500" /> {doc.facility_name}</p>
-                  <p className="pl-6 text-xs">{doc.facility_area} • {doc.pincode_demo}</p>
+                  <p className="pl-6 text-xs">{doc.facility_area} â€¢ {doc.pincode_demo}</p>
                 </div>
                 
                 <div className="space-y-2 pt-4 border-t border-slate-800">
@@ -409,9 +409,9 @@ export const DoctorDiscovery = () => {
                   <div className="w-full max-w-sm mx-auto mt-4 text-left">
                     <p className="text-sm font-semibold text-slate-300 mb-2">Add to Calendar / Reminders</p>
                     <div className="flex flex-wrap gap-2">
-                      <button onClick={(e) => { e.currentTarget.innerText = "✓ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3-4 hrs before</button>
-                      <button onClick={(e) => { e.currentTarget.innerText = "✓ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">1 day before</button>
-                      <button onClick={(e) => { e.currentTarget.innerText = "✓ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3 days before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3-4 hrs before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">1 day before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3 days before</button>
                     </div>
                   </div>
 
@@ -440,7 +440,7 @@ export const DoctorDiscovery = () => {
               {bookingStep === "in_call" && (
                 <div className="flex flex-col h-[60vh] bg-black rounded-xl overflow-hidden relative border border-slate-800">
                   <iframe 
-                    src={`https://meet.jit.si/CareFlowDemo_${selectedDoctor.doctor_id}_Room`}
+                    src={`https://meet.jit.si/ArogyaGridDemo_${selectedDoctor.doctor_id}_Room`}
                     allow="camera; microphone; fullscreen; display-capture"
                     className="w-full h-full border-0"
                   ></iframe>

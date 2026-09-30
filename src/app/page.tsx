@@ -12,7 +12,7 @@ export default function HomePage() {
       <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
         <div className="flex items-center gap-2">
           <Mic className="w-5 h-5 text-cyan-400" />
-          <span className="text-xl font-bold text-white tracking-tight">CareFlow AI</span>
+          <span className="text-xl font-bold text-white tracking-tight">Saarthi AI</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
           <Link href="/voice" className="hover:text-white transition-colors">Medical AI Suite</Link>
@@ -26,6 +26,27 @@ export default function HomePage() {
           </Link>
         </div>
       </nav>
+
+      {/* Prime Minister Quote Section */}
+      <section className="max-w-5xl mx-auto px-4 pt-4 pb-8 relative z-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-r from-[#0d1218] via-[#121b22] to-[#0d1218] p-8 rounded-3xl border border-slate-800/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="relative shrink-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FF9933] via-white to-[#138808] rounded-full blur-lg opacity-60"></div>
+            <img 
+              src="/images/modiji.png" 
+              alt="Shri Narendra Modi" 
+              className="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border border-slate-800/80 shadow-2xl mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+            />
+          </div>
+          <div className="text-center md:text-left max-w-2xl">
+            <p className="text-lg md:text-xl font-medium text-slate-300 italic mb-4 leading-relaxed">
+              "I dream of a Digital India where quality healthcare percolates right up to the remotest regions powered by e-Healthcare."
+            </p>
+            <h3 className="text-lg font-bold text-white tracking-tight">Shri Narendra Modi</h3>
+            <p className="text-sm text-slate-400 font-medium">Hon'ble Prime Minister of India</p>
+          </div>
+        </div>
+      </section>
 
       {/* Hero Section */}
       <section className="text-center pt-16 pb-12 px-4 max-w-5xl mx-auto">
@@ -59,7 +80,7 @@ export default function HomePage() {
       {/* Features Grid (Toolkit) */}
       <section className="py-16 px-4 max-w-7xl mx-auto border-t border-slate-800/50">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white tracking-tight">CareFlow Toolkit</h2>
+          <h2 className="text-3xl font-bold text-white tracking-tight">ArogyaGrid Toolkit</h2>
           <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
             Streamline your practice with advanced AI tools designed to reduce administrative tasks and enhance patient care. Experience the future of healthcare management today.
           </p>
