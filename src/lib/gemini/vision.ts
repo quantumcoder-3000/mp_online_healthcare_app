@@ -2,11 +2,9 @@ import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { ExtractedPrescription, RawMedication } from "../../types/prescription";
 
 const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
-  throw new Error("GEMINI_API_KEY is not configured on the server.");
-}
+if (!apiKey) { console.warn("GEMINI_API_KEY is not configured on the server. AI features may fail."); }
 
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: apiKey || "dummy" });
 
 const prescriptionSchema: Schema = {
   type: Type.OBJECT,

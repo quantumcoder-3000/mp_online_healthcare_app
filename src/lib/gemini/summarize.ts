@@ -65,12 +65,10 @@ export function validatePatientIntake(value: unknown): PatientIntake {
 
 export async function summarizeTranscript(transcript: string): Promise<PatientIntake> {
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new Error("GEMINI_API_KEY is not configured on the server.");
-  }
+  if (!apiKey) { console.warn("GEMINI_API_KEY is not configured on the server. AI features may fail."); }
 
   const model = process.env.GEMINI_SUMMARY_MODEL || "gemini-3.8-flash";
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: apiKey || "dummy" });
 
   const prompt = `
 You are CareFlow's patient-intake structuring assistant.
