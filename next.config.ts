@@ -1,15 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/voice",
-        permanent: false,
-      },
-    ];
-  },
+  // Empty config since we removed the redirect earlier
 };
 
 export default nextConfig;
