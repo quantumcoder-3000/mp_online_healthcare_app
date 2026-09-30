@@ -22,7 +22,7 @@ export default function GuidelinesPage() {
           <Scale className="w-8 h-8 text-emerald-400 mb-4" />
           <h3 className="text-xl font-bold text-white mb-3">NITI Aayog Responsible AI (Part 1 & 2)</h3>
           <p className="text-slate-400 text-sm leading-relaxed mb-4">
-            Following NITI Aayog's "Operationalizing Principles for Responsible AI" document (August 2021), we mandate Ethics-by-Design. Our architecture adopts a strictly risk-based approach, ensuring Generative AI is decoupled from high-risk medical decision making.
+            Following NITI Aayog&apos;s &quot;Operationalizing Principles for Responsible AI&quot; document (August 2021),  we mandate Ethics-by-Design. Our architecture adopts a strictly risk-based approach, ensuring Generative AI is decoupled from high-risk medical decision making.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex items-start gap-2">
@@ -31,7 +31,7 @@ export default function GuidelinesPage() {
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-              <span><strong>Risk-Based Interventions:</strong> Applying NITI Aayog's mandate that regulatory scrutiny must match the likelihood of harm, high-risk triage is deferred to deterministic engines.</span>
+              <span><strong>Risk-Based Interventions:</strong> Applying NITI Aayog&apos;s mandate that regulatory scrutiny must match the likelihood of harm, high-risk triage is deferred to deterministic engines.</span>
             </li>
           </ul>
         </div>
