@@ -118,7 +118,7 @@ function VoiceControls({
   onClear: () => void;
 }) {
   const active = state === "listening" || state === "speaking";
-  const busy = state === "Connecting...";
+  const busy = state === "connecting";
 
   return (
     <div className="voice-control-stack">

@@ -9,6 +9,7 @@ interface Doctor {
   facility_area: string;
   facility_name: string;
   pincode_demo: string;
+  registration_id_demo?: string;
   virtual_availability: string;
   physical_availability: string;
 }
@@ -164,7 +165,7 @@ export const DoctorDiscovery = () => {
               <div className="p-4 space-y-4">
                 <div className="space-y-2 text-sm text-slate-400">
                   <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-slate-500" /> {doc.facility_name}</p>
-                  <p className="pl-6 text-xs">{doc.facility_area} â€¢ {doc.pincode_demo}</p>
+                  <p className="pl-6 text-xs">{doc.facility_area} Ã¢â‚¬Â¢ {doc.pincode_demo}</p>
                 </div>
                 
                 <div className="space-y-2 pt-4 border-t border-slate-800">
@@ -409,9 +410,9 @@ export const DoctorDiscovery = () => {
                   <div className="w-full max-w-sm mx-auto mt-4 text-left">
                     <p className="text-sm font-semibold text-slate-300 mb-2">Add to Calendar / Reminders</p>
                     <div className="flex flex-wrap gap-2">
-                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3-4 hrs before</button>
-                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">1 day before</button>
-                      <button onClick={(e) => { e.currentTarget.innerText = "âœ“ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3 days before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "Ã¢Å“â€œ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3-4 hrs before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "Ã¢Å“â€œ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">1 day before</button>
+                      <button onClick={(e) => { e.currentTarget.innerText = "Ã¢Å“â€œ Added"; e.currentTarget.className="px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors"; }} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-colors">3 days before</button>
                     </div>
                   </div>
 
