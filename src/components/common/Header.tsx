@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCareFlow } from "@/context/CareFlowContext";
-import {
+import { ShieldCheck, 
   Activity,
   Play,
   RotateCcw,
@@ -33,6 +33,7 @@ export const Header: React.FC = () => {
     { href: "/hospital", label: "Hospital", icon: Building2 },
     { href: "/ambulance", label: "Ambulance", icon: Truck },
     { href: "/emergency", label: "Emergency", icon: AlertTriangle },
+    { href: "/guidelines", label: "Safety", icon: ShieldCheck },
   ];
 
   return (
