@@ -252,7 +252,7 @@ export function VoiceIntake() {
       setIntake(payload.data);
       setSummaryStatus("idle");
       // Trigger dynamic integration!
-      if (payload.data.is_emergency) { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
+      if (payload.data.triage_level === "potential_emergency") { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
     } catch (error) {
       setSummaryStatus("error");
       setSummaryError(error instanceof Error ? error.message : "Unable to create intake summary.");
@@ -316,7 +316,7 @@ export function VoiceIntake() {
             </div>
             <div className="workflow-step muted-step">
               <b>04</b>
-              <div><strong>Later: triage</strong><span>This prototype keeps medical triage separate from generative AI.</span></div>
+              <div><strong>Safety Screening</strong><span>3-tier risk evaluation prioritizing conservative escalation over diagnosis.</span></div>
             </div>
           </div>
 
