@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
           </Link>
 
           {/* Nav links */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {navLinks.map(({ href, label, icon: Icon }) => {
               const isActive = pathname === href;
               return (
@@ -98,6 +98,27 @@ export const Header: React.FC = () => {
           </button>
         </div>
       </div>
+      {/* Mobile Navigation Bar */}
+      <nav className="xl:hidden border-t border-slate-800 bg-slate-900/50 overflow-x-auto no-scrollbar pb-1">
+        <div className="flex items-center gap-2 px-4 py-2 min-w-max">
+          {navLinks.map(({ href, label, icon: Icon }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={px-3 py-2 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap }
+              >
+                <Icon className={w-3.5 h-3.5 } />
+                <span>{label}</span>
+                {href === "/emergency" && activeEmergency && (
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </header>
   );
 };
