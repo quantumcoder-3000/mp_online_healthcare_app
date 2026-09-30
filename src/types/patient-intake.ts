@@ -15,7 +15,7 @@ export interface PatientIntake {
   allergies: string[];
   additional_information: string[];
   summary: string;
-  is_emergency: boolean;
+  is_emergency?: boolean;
 
   // Added for ambulance module integration
   caseId?: string;
