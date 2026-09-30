@@ -27,27 +27,6 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Prime Minister Quote Section */}
-      <section className="max-w-5xl mx-auto px-4 pt-4 pb-8 relative z-20">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-r from-[#0d1218] via-[#121b22] to-[#0d1218] p-8 rounded-3xl border border-slate-800/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          <div className="relative shrink-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#FF9933] via-white to-[#138808] rounded-full blur-lg opacity-60"></div>
-            <img 
-              src="/images/modiji.png" 
-              alt="Shri Narendra Modi" 
-              className="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border border-slate-800/80 shadow-2xl mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
-            />
-          </div>
-          <div className="text-center md:text-left max-w-2xl">
-            <p className="text-lg md:text-xl font-medium text-slate-300 italic mb-4 leading-relaxed">
-              "I dream of a Digital India where quality healthcare percolates right up to the remotest regions powered by e-Healthcare."
-            </p>
-            <h3 className="text-lg font-bold text-white tracking-tight">Shri Narendra Modi</h3>
-            <p className="text-sm text-slate-400 font-medium">Hon'ble Prime Minister of India</p>
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section */}
       <section className="text-center pt-16 pb-12 px-4 max-w-5xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
@@ -147,32 +126,125 @@ export default function HomePage() {
             </p>
           </Link>
         </div>
-      </section>
-
-      {/* Map Statistics Section (India/MP Map placeholder concept like the image) */}
-      <section className="py-16 bg-[#e6effc]">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="bg-[#0b8005] text-white px-8 py-6 rounded-xl shadow-lg w-full md:w-auto text-center md:text-left mb-8 md:mb-0">
-            <p className="text-4xl font-bold mb-1">502,911,634</p>
-            <p className="text-sm font-medium">Total Patients Served</p>
-          </div>
-          
-          <div className="flex-1 flex justify-center opacity-70 scale-75 md:scale-100">
-            {/* Outline placeholder for the map shown in user image */}
-            <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M200 20 L250 50 L280 150 L260 250 L180 380 L140 280 L100 200 L120 100 Z" stroke="#cbd5e1" strokeWidth="2" fill="#f8fafc" />
-              <circle cx="150" cy="150" r="10" fill="none" stroke="#f97316" strokeWidth="2" />
-              <circle cx="150" cy="150" r="3" fill="#f97316" />
-              <circle cx="230" cy="200" r="20" fill="none" stroke="#f97316" strokeWidth="2" />
-              <circle cx="230" cy="200" r="4" fill="#f97316" />
-              <circle cx="180" cy="300" r="15" fill="none" stroke="#f97316" strokeWidth="2" />
-              <circle cx="180" cy="300" r="3" fill="#f97316" />
-            </svg>
+      </section>      {/* ArogyaGrid State Network Map Section */}
+      <section className="py-20 bg-slate-950 relative overflow-hidden border-y border-slate-900/80">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-900/10 via-slate-950 to-slate-950"></div>
+        <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">ArogyaGrid State Network</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto font-medium">Real-time intelligent routing across Madhya Pradesh's network of integrated medical facilities.</p>
           </div>
 
-          <div className="bg-[#0b8005] text-white px-8 py-6 rounded-xl shadow-lg w-full md:w-auto text-center md:text-left mt-8 md:mt-0">
-            <p className="text-4xl font-bold mb-1">196,416</p>
-            <p className="text-sm font-medium">Patients Served Today</p>
+          <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
+            
+            {/* Left Stat */}
+            <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 text-white px-8 py-8 rounded-2xl shadow-2xl w-full lg:w-72 text-center transform transition-all hover:-translate-y-1 hover:border-cyan-500/30 group">
+              <div className="w-12 h-12 rounded-full bg-cyan-900/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Activity className="w-6 h-6 text-cyan-400" />
+              </div>
+              <p className="text-4xl md:text-5xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">502M+</p>
+              <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Total Patients Served</p>
+            </div>
+            
+            {/* MP Map Custom SVG */}
+            <div className="relative w-full max-w-xl aspect-[5/4] flex justify-center items-center">
+              {/* Animated connection lines behind the map */}
+              <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+                <path d="M150,200 Q250,150 350,220 T450,180" fill="none" stroke="rgba(34, 211, 238, 0.2)" strokeWidth="1" strokeDasharray="5,5" className="animate-pulse" />
+                <path d="M200,300 Q300,250 400,320" fill="none" stroke="rgba(34, 211, 238, 0.2)" strokeWidth="1" strokeDasharray="5,5" />
+              </svg>
+
+              <svg width="100%" height="100%" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" className="filter drop-shadow-[0_0_15px_rgba(34,211,238,0.15)] z-10">
+                {/* Stylized Madhya Pradesh Polygon Base */}
+                <path 
+                  d="M170,120 L240,60 L290,40 L340,60 L380,50 L420,90 L480,120 L510,180 L490,240 L530,280 L490,320 L440,310 L410,360 L360,400 L320,410 L280,380 L230,390 L180,340 L120,330 L80,280 L60,220 L90,180 L130,160 Z" 
+                  fill="#0f172a" 
+                  stroke="#1e293b" 
+                  strokeWidth="3"
+                />
+                <path 
+                  d="M170,120 L240,60 L290,40 L340,60 L380,50 L420,90 L480,120 L510,180 L490,240 L530,280 L490,320 L440,310 L410,360 L360,400 L320,410 L280,380 L230,390 L180,340 L120,330 L80,280 L60,220 L90,180 L130,160 Z" 
+                  fill="url(#mp-gradient)" 
+                  opacity="0.5"
+                />
+
+                <defs>
+                  <linearGradient id="mp-gradient" x1="0" y1="0" x2="600" y2="450" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#0891b2" stopOpacity="0.2" />
+                    <stop offset="1" stopColor="#020617" stopOpacity="0.6" />
+                  </linearGradient>
+                </defs>
+
+                {/* Grid Overlay */}
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <circle cx="2" cy="2" r="1" fill="#334155" opacity="0.4" />
+                </pattern>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#grid)" />
+
+                {/* Important Hospital Nodes */}
+                
+                {/* AIIMS Bhopal (Central) */}
+                <g className="group" transform="translate(280, 220)">
+                  <circle cx="0" cy="0" r="16" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" />
+                  <circle cx="0" cy="0" r="8" fill="#22d3ee" stroke="#083344" strokeWidth="2" />
+                  <rect x="-40" y="-35" width="80" height="22" rx="4" fill="#0f172a" stroke="#22d3ee" strokeWidth="1" className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <text x="0" y="-20" fill="#e2e8f0" fontSize="10" fontWeight="bold" textAnchor="middle" className="opacity-0 group-hover:opacity-100 transition-opacity">AIIMS Bhopal</text>
+                </g>
+
+                {/* MY Hospital Indore (West) */}
+                <g className="group" transform="translate(160, 280)">
+                  <circle cx="0" cy="0" r="12" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" style={{ animationDelay: "0.5s" }} />
+                  <circle cx="0" cy="0" r="6" fill="#38bdf8" />
+                  <text x="0" y="-15" fill="#94a3b8" fontSize="11" fontWeight="bold" textAnchor="middle">Indore</text>
+                </g>
+
+                {/* GMC Gwalior (North) */}
+                <g className="group" transform="translate(260, 90)">
+                  <circle cx="0" cy="0" r="10" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" style={{ animationDelay: "1s" }} />
+                  <circle cx="0" cy="0" r="5" fill="#38bdf8" />
+                  <text x="0" y="-15" fill="#94a3b8" fontSize="11" fontWeight="bold" textAnchor="middle">Gwalior</text>
+                </g>
+
+                {/* NSCB Medical College Jabalpur (East-Central) */}
+                <g className="group" transform="translate(400, 250)">
+                  <circle cx="0" cy="0" r="14" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" style={{ animationDelay: "1.5s" }} />
+                  <circle cx="0" cy="0" r="7" fill="#38bdf8" />
+                  <text x="0" y="-15" fill="#94a3b8" fontSize="11" fontWeight="bold" textAnchor="middle">Jabalpur</text>
+                </g>
+
+                {/* BMC Sagar (Central-East) */}
+                <g className="group" transform="translate(350, 180)">
+                  <circle cx="0" cy="0" r="10" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" style={{ animationDelay: "0.8s" }} />
+                  <circle cx="0" cy="0" r="5" fill="#38bdf8" />
+                  <text x="0" y="-15" fill="#94a3b8" fontSize="11" fontWeight="bold" textAnchor="middle">Sagar</text>
+                </g>
+
+                {/* SSMC Rewa (East) */}
+                <g className="group" transform="translate(480, 160)">
+                  <circle cx="0" cy="0" r="10" fill="rgba(34, 211, 238, 0.1)" className="animate-ping" style={{ animationDelay: "1.2s" }} />
+                  <circle cx="0" cy="0" r="5" fill="#38bdf8" />
+                  <text x="0" y="-15" fill="#94a3b8" fontSize="11" fontWeight="bold" textAnchor="middle">Rewa</text>
+                </g>
+
+                {/* Connecting paths */}
+                <path d="M160,280 L280,220 L260,90" fill="none" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1.5" strokeDasharray="4,4" />
+                <path d="M280,220 L350,180 L480,160" fill="none" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1.5" strokeDasharray="4,4" />
+                <path d="M280,220 L400,250" fill="none" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1.5" strokeDasharray="4,4" />
+                
+              </svg>
+            </div>
+  
+            {/* Right Stat */}
+            <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 text-white px-8 py-8 rounded-2xl shadow-2xl w-full lg:w-72 text-center transform transition-all hover:-translate-y-1 hover:border-cyan-500/30 group">
+              <div className="w-12 h-12 rounded-full bg-cyan-900/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-6 h-6 text-cyan-400" />
+              </div>
+              <p className="text-4xl md:text-5xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">196K</p>
+              <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Served Today</p>
+            </div>
+            
           </div>
         </div>
       </section>
