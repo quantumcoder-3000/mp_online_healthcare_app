@@ -26,13 +26,13 @@ export const Header: React.FC = () => {
   const [showQR, setShowQR] = useState(false);
 
   const navLinks = [
-    { href: "/discovery", label: "Find a Doctor", icon: Search },
-    { href: "/voice", label: "Voice AI Intake", icon: Radio },
-    { href: "/prescription", label: "Prescription & Pharmacy", icon: FileText },
-    { href: "/command-center", label: "Command Center", icon: LayoutDashboard },
-    { href: "/hospital", label: "Hospital Ops", icon: Building2 },
-    { href: "/ambulance", label: "Ambulance Fleet", icon: Truck },
-    { href: "/emergency", label: "Active Incident", icon: AlertTriangle },
+    { href: "/discovery", label: "Doctors", icon: Search },
+    { href: "/voice", label: "SaarthiAI", icon: Radio },
+    { href: "/prescription", label: "Prescription", icon: FileText },
+    { href: "/command-center", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/hospital", label: "Hospital", icon: Building2 },
+    { href: "/ambulance", label: "Ambulance", icon: Truck },
+    { href: "/emergency", label: "Emergency", icon: AlertTriangle },
   ];
 
   return (
@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
               className="hidden sm:flex px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs items-center gap-1.5 shadow-lg border border-slate-700 transition-all hover:scale-105 active:scale-95"
             >
               <Smartphone className="w-3.5 h-3.5" />
-              <span>Get App</span>
+              <span>App</span>
             </button>
 
             <button
@@ -118,7 +118,7 @@ export const Header: React.FC = () => {
               className="px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors bg-cyan-900/30 text-cyan-400 border border-cyan-800/50 mr-2"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download App</span>
+              <span>App</span>
             </button>
             {navLinks.map(({ href, label, icon: Icon }) => {
               const isActive = pathname === href;
