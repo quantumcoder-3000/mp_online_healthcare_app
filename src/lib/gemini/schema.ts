@@ -38,7 +38,7 @@ export const patientIntakeSchema = {
       items: { type: "string" },
     },
     summary: { type: "string" },
-    triage_level: { type: "string", enum: ["potential_emergency", "needs_evaluation", "lower_risk"], description: "Safety-first screening: Evaluate predefined clinical red flags. Output 'potential_emergency' for potential severe conditions triggering ambulance, 'needs_evaluation' for prompt doctor consultation, and 'lower_risk' for non-emergency." },
+    
   },
   required: [
     "patient_name",
@@ -54,6 +54,6 @@ export const patientIntakeSchema = {
     "allergies",
     "additional_information",
     "summary",
-    "triage_level",
+    
   ],
 };

@@ -7,6 +7,7 @@ import { GeminiLiveClient } from "@/lib/gemini/live-client";
 import { useCareFlow } from "@/context/CareFlowContext";
 import type { VoiceMessage, VoiceSessionState } from "@/types/live";
 import type { PatientIntake } from "@/types/patient-intake";
+import { evaluateRedFlags } from "@/lib/triage/engine";
 
 function StatusPill({
   label,
@@ -252,7 +253,7 @@ export function VoiceIntake() {
       setIntake(payload.data);
       setSummaryStatus("idle");
       // Trigger dynamic integration!
-      if (payload.data.triage_level === "potential_emergency") { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
+      const triageCategory = evaluateRedFlags(payload.data); payload.data.triageCategory = triageCategory; if (triageCategory === "RED") { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
     } catch (error) {
       setSummaryStatus("error");
       setSummaryError(error instanceof Error ? error.message : "Unable to create intake summary.");
@@ -266,7 +267,7 @@ export function VoiceIntake() {
           <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">VOICE INTAKE</p>
           <h2 className="text-3xl font-bold text-white mb-3">Speak naturally.</h2>
           <p className="text-slate-400 text-sm max-w-lg mx-auto">
-            Describe your symptoms. The AI handles the real-time conversation and ArogyaGrid prepares a structured patient handoff.
+            AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic, with escalation to emergency services when high-risk features are detected or when uncertainty exists. The system does not diagnose or replace a medical professional.
           </p>
         </div>
 
@@ -316,7 +317,7 @@ export function VoiceIntake() {
             </div>
             <div className="workflow-step muted-step">
               <b>04</b>
-              <div><strong>Safety Screening</strong><span>3-tier risk evaluation prioritizing conservative escalation over diagnosis.</span></div>
+              <div><strong>Safety Screening</strong><span>Rule-based evaluation using DGHS clinical red flags to categorize risk into RED, YELLOW, or GREEN.</span></div>
             </div>
           </div>
 

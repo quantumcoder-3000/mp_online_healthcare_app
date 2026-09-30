@@ -15,7 +15,7 @@ export interface PatientIntake {
   allergies: string[];
   additional_information: string[];
   summary: string;
-  triage_level?: "potential_emergency" | "needs_evaluation" | "lower_risk";
+  triageCategory?: "RED" | "YELLOW" | "GREEN";
 
   // Added for ambulance module integration
   caseId?: string;

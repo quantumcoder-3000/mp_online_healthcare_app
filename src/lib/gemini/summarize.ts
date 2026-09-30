@@ -60,7 +60,7 @@ export function validatePatientIntake(value: unknown): PatientIntake {
     allergies: value.allergies,
     additional_information: value.additional_information,
     summary: value.summary,
-    triage_level: typeof value.triage_level === "string" ? value.triage_level as PatientIntake["triage_level"] : undefined,
+    
   };
 }
 
