@@ -34,9 +34,9 @@ export default function RootLayout({
                 </div>
                 <div className="text-center md:text-left">
                   <p className="text-sm md:text-base font-medium text-slate-300 italic mb-2 leading-relaxed">
-                    "I dream of a Digital India where quality healthcare percolates right up to the remotest regions powered by e-Healthcare."
+                    &quot;I dream of a Digital India where quality healthcare percolates right up to the remotest regions powered by e-Healthcare.&quot;
                   </p>
-                  <h3 className="text-sm font-bold text-white tracking-tight">Shri Narendra Modi <span className="text-xs text-slate-400 font-medium ml-2 font-normal">Hon'ble Prime Minister of India</span></h3>
+                  <h3 className="text-sm font-bold text-white tracking-tight">Shri Narendra Modi <span className="text-xs text-slate-400 font-medium ml-2 font-normal">Hon&apos;ble Prime Minister of India</span></h3>
                 </div>
               </div>
             </div>
