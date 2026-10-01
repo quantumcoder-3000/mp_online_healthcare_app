@@ -10,7 +10,21 @@ const DEMO_PRESCRIPTION: ExtractedPrescription = {
   facilityName: "CareFlow Demo Hospital",
   prescriptionDate: new Date().toISOString().split("T")[0],
   notes: "Follow up in 5 days.",
-  needsVerification: true, // Force user to verify demo
+  needsVerification: true,
+  tests: [
+    {
+      id: "TEST-DEMO-1",
+      name: "Complete Blood Count (CBC)",
+      reason: "Check for infection",
+      needsVerification: false
+    },
+    {
+      id: "TEST-DEMO-2",
+      name: "Lipid Profile",
+      reason: "Routine check",
+      needsVerification: false
+    }
+  ],
   medications: [
     {
       id: "MED-DEMO-1",
