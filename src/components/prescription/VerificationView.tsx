@@ -9,7 +9,7 @@ export function VerificationView() {
   const { extractedPrescription, setConfirmedMedications, setConfirmedTests, setIsVerified, setSchedule } = usePrescription();
   
   const [meds, setMeds] = useState<RawMedication[]>(extractedPrescription?.medications || []);
-  const [tests, setTests] = useState<ConfirmedTest[]>(extractedPrescription?.tests || []);
+  const [tests, setTests] = useState<any>(extractedPrescription?.tests || []);
 
   const handleUpdate = (id: string, field: keyof RawMedication, value: string) => {
     setMeds(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : m));

@@ -439,7 +439,7 @@ export const DoctorDiscovery = () => {
               )}
 
               {bookingStep === "in_call" && (
-                <div className="flex flex-col h-[60vh] bg-black rounded-xl overflow-hidden relative border border-slate-800">
+                <div className="flex flex-col h-[75vh] min-h-[500px] bg-black rounded-xl overflow-hidden relative border border-slate-800">
                   <iframe 
                     src={`https://meet.jit.si/ArogyaGridDemo_${selectedDoctor.doctor_id}_Room`}
                     allow="camera; microphone; fullscreen; display-capture"
@@ -449,12 +449,7 @@ export const DoctorDiscovery = () => {
                     <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                     DEMO CONSULTATION ROOM
                   </div>
-                  <button 
-                    onClick={() => setSelectedDoctor(null)}
-                    className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-red-600 hover:bg-red-500 text-white px-6 py-2.5 rounded-full font-medium shadow-lg shadow-red-900/50 flex items-center gap-2 transition-colors"
-                  >
-                    <PhoneCall className="w-4 h-4" /> End Call
-                  </button>
+                  
                 </div>
               )}
             </div>
