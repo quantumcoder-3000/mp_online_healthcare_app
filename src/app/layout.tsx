@@ -24,15 +24,7 @@ export default function RootLayout({
             {/* Global Prime Minister Quote Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 bg-gradient-to-r from-[#0d1218] via-[#121b22] to-[#0d1218] p-4 md:p-6 rounded-2xl border border-slate-800/50 shadow-xl">
-                <div className="relative shrink-0">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF9933] via-white to-[#138808] rounded-full blur-md opacity-60"></div>
-                  <img 
-                    src="/images/modiji.png" 
-                    alt="Shri Narendra Modi" 
-                    className="relative w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border border-slate-800/80 shadow-lg mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
-                  />
-                </div>
-                <div className="text-center md:text-left">
+                <div className="text-center">
                   <p className="text-sm md:text-base font-medium text-slate-300 italic mb-2 leading-relaxed">
                     &quot;I dream of a Digital India where quality healthcare percolates right up to the remotest regions powered by e-Healthcare.&quot;
                   </p>
