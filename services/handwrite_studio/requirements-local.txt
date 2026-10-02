@@ -1,0 +1,4 @@
+# Install in a Python 3.10–3.12 virtual environment.
+# PaddleOCR downloads the selected open model weights on the first conversion.
+paddlepaddle>=3.0
+paddleocr[doc-parser]>=3.0
