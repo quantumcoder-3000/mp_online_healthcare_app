@@ -556,7 +556,25 @@ class App(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path in {"/", "/index.html"}:
-            self.send_bytes(200, HTML.encode("utf-8"), "text/html; charset=utf-8")
+            try:
+                html = (ROOT / "index.html").read_bytes()
+                self.send_bytes(200, html, "text/html; charset=utf-8")
+            except Exception:
+                self.send_bytes(200, HTML.encode("utf-8"), "text/html; charset=utf-8")
+            return
+        if self.path == "/style.css":
+            try:
+                css = (ROOT / "style.css").read_bytes()
+                self.send_bytes(200, css, "text/css; charset=utf-8")
+            except Exception:
+                self.send_error(404)
+            return
+        if self.path == "/app.js":
+            try:
+                js = (ROOT / "app.js").read_bytes()
+                self.send_bytes(200, js, "application/javascript; charset=utf-8")
+            except Exception:
+                self.send_error(404)
             return
         if self.path == "/health":
             self.send_json(200, {"ok": True, "model": LOCAL_MODEL, "device": DEVICE})
