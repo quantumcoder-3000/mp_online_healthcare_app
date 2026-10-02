@@ -34,7 +34,7 @@ except Exception:
 
 HOST = os.getenv("HANDWRITE_HOST", "127.0.0.1")
 PORT = int(os.getenv("HANDWRITE_PORT", "8080"))
-DEVICE = os.getenv("HANDWRITE_DEVICE", "cpu")
+DEVICE = os.getenv("HANDWRITE_DEVICE", "gpu")
 MAX_UPLOAD = 20 * 1024 * 1024
 LOCAL_MODEL = "PaddleOCR-VL (local)"
 
@@ -347,6 +347,23 @@ def _recognize_once_in_worker(mime: str, filename: str, raw: bytes, job_dir: Pat
     return result["data"]
 
 
+def parse_clinical(text: str) -> dict | None:
+    # A lightweight heuristics-based clinical extractor
+    text = text.lower()
+    if not any(kw in text for kw in ["rx", "mg", "ml", "tab", "cap", "daily", "bd", "tds", "od"]):
+        return None
+    
+    medications = []
+    lines = text.split('\n')
+    for line in lines:
+        if len(line.strip()) < 4: continue
+        # Basic heuristic for finding meds (e.g., "Paracetamol 500mg 1-1-1")
+        if re.search(r'\b(mg|ml|mcg|gm|g|tablet|capsule|tab|cap|syrup)\b', line, re.I):
+            medications.append(line.strip().title())
+            
+    if not medications: return None
+    return {"medications": medications}
+
 def _ocr_worker_main(source_path: str, output_dir: str, mime: str, filename: str, result_json: str) -> int:
     """Worker entrypoint: load PaddleOCR-VL, run one prediction, save JSON, exit."""
     try:
@@ -375,6 +392,9 @@ def _ocr_worker_main(source_path: str, output_dir: str, mime: str, filename: str
 
         document_type = "table" if table else "math" if "\\(" in transcript or "$$" in transcript or "\\[" in transcript else "note"
         stem = Path(filename).stem or "Untitled"
+        clinical_data = parse_clinical(transcript)
+        if clinical_data: document_type = "prescription"
+        
         data = {
             "document_type": document_type,
             "language": recognise_language(transcript),
@@ -383,6 +403,7 @@ def _ocr_worker_main(source_path: str, output_dir: str, mime: str, filename: str
             "confidence": None,
             "needs_review": ["Local OCR does not provide a calibrated confidence score. Check names, numbers, equations, and unclear handwriting before export."],
             "table": table,
+            "clinical": clinical_data
         }
         Path(result_json).write_text(json.dumps({"ok": True, "data": data}, ensure_ascii=False), encoding="utf-8")
         return 0

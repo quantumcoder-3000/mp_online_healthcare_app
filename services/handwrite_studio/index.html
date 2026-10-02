@@ -1,7 +1,77 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Handwrite Studio</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="brand"><span class="mark">⌁</span><div><strong>Handwrite Studio</strong><small>Multilingual handwriting intelligence</small></div></div><div class="model">Vision model <b id="modelName">local PaddleOCR-VL</b></div></header>
-<main><section class="intro"><p class="eyebrow">SCAN · UNDERSTAND · EXPORT</p><h1>Turn handwriting into<br><em>working text.</em></h1><p>English, বাংলা, and हिन्दी—plus equations, scientific notation, forms, and tables that become editable data.</p></section>
-<section class="workspace"><div class="source panel"><div class="panel-top"><span>Original document</span><span id="fileState">No file selected</span></div><label id="dropZone" class="drop"><input id="fileInput" type="file" accept="image/*,.pdf"><span class="upload-icon">↥</span><strong>Drop a handwritten document here</strong><small>or choose an image or PDF · up to 20 MB</small><button type="button" id="choose">Choose file</button></label><div id="previewWrap" hidden><img id="preview" alt="Uploaded document preview"><iframe id="pdfPreview" title="Uploaded PDF preview" style="width:100%;height:100%;padding:0;border:0;background:#fff"></iframe><button class="replace" id="replace">Replace file</button></div></div>
-<div class="result panel"><div class="panel-top"><span>Editable conversion</span><span id="status" class="status">Waiting</span></div><div id="empty" class="empty"><span>✦</span><p>Your transcription will appear here.</p><small>Review or refine every word before you export.</small></div><div id="editor" hidden><div class="meta"><span id="docType">DOCUMENT</span><span id="lang">—</span><span id="confidence">—</span></div><input id="title" aria-label="Document title" value="Untitled"><textarea id="text" spellcheck="true" aria-label="Editable transcription"></textarea><div id="review" class="review" hidden></div></div></div></section>
-<section class="actions"><div id="tableNote">The app will choose a table-aware export when it detects rows and columns.</div><button id="recognize" class="primary" disabled>Convert handwriting <span>→</span></button><div class="exports"><span>Download as</span><button data-format="txt" disabled>TXT</button><button data-format="docx" disabled>DOCX</button><button data-format="csv" disabled>CSV</button><button data-format="xlsx" disabled>XLSX</button><button data-format="pdf" disabled>PDF</button></div></section>
-<section class="features"><article><b>01</b><h2>Read what people write</h2><p>Designed for messy notes, mixed scripts, diagrams, formulas, and uncertainty-aware review.</p></article><article><b>02</b><h2>Recognize structure</h2><p>Tables become rows and columns; notes preserve hierarchy; equations stay mathematical.</p></article><article><b>03</b><h2>You remain in control</h2><p>Compare source and output side-by-side, edit inline, then export in the format you need.</p></article></section></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ArogyaGrid Clinical OCR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="mark">AG</span>
+    <div>
+      <strong>ArogyaGrid Local OCR</strong>
+      <small>Offline Clinical AI Workspace</small>
+    </div>
+  </div>
+  <div class="model">Engine <b id="modelName">PaddleOCR-VL GPU</b></div>
+</header>
+<main>
+  <section class="intro">
+    <h1>Clinical Data Extraction</h1>
+    <p>Securely convert handwritten prescriptions, medical forms, and lab reports into editable, structured data without sending patient information to the cloud.</p>
+  </section>
+  <section class="workspace">
+    <div class="source panel">
+      <div class="panel-top"><span>Original Document</span><span id="fileState">No file selected</span></div>
+      <label id="dropZone" class="drop">
+        <input id="fileInput" type="file" accept="image/*,.pdf">
+        <span class="upload-icon">📄</span>
+        <strong>Drop a prescription or report here</strong>
+        <small>Images or PDFs up to 20MB</small>
+        <button type="button" id="choose">Choose file</button>
+      </label>
+      <div id="previewWrap" hidden>
+        <img id="preview" alt="Uploaded document preview">
+        <iframe id="pdfPreview" title="Uploaded PDF preview" style="width:100%;height:100%;padding:0;border:0;background:#fff"></iframe>
+        <button class="replace" id="replace">Replace</button>
+      </div>
+    </div>
+    
+    <div class="result panel">
+      <div class="panel-top"><span>Extracted Data</span><span id="status" class="status">Waiting</span></div>
+      <div id="empty" class="empty">
+        <span>⚡</span>
+        <p>Your transcription will appear here.</p>
+      </div>
+      <div id="editor" hidden>
+        <div class="meta">
+          <span id="docType">DOCUMENT</span>
+          <span id="lang">Language</span>
+        </div>
+        <input id="title" aria-label="Document title" value="Untitled">
+        <div id="clinicalData" class="clinical-data" hidden>
+          <h4>Structured Medical Entities</h4>
+          <ul id="clinicalList"></ul>
+        </div>
+        <textarea id="text" spellcheck="true" aria-label="Editable transcription"></textarea>
+      </div>
+    </div>
+  </section>
+  
+  <section class="actions">
+    <button id="recognize" class="primary" disabled>Extract Clinical Data <span>→</span></button>
+    <div class="exports">
+      <span>Export</span>
+      <button data-format="txt" disabled>TXT</button>
+      <button data-format="csv" disabled>CSV</button>
+      <button data-format="docx" disabled>DOCX</button>
+      <button data-format="xlsx" disabled>XLSX</button>
+      <button data-format="pdf" disabled>PDF</button>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
