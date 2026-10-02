@@ -3,187 +3,102 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCareFlow } from "@/context/CareFlowContext";
-import { ShieldCheck, 
-  Activity,
-  Play,
-  RotateCcw,
-  Radio,
-  Building2,
-  Truck,
-  AlertTriangle,
-  LayoutDashboard,
-  FileText,
-  Search,
-  Download,
-  X,
-  Smartphone
-} from "lucide-react";
+import { Moon, Bell, User, Menu, X, Activity } from "lucide-react";
 
-export const Header: React.FC = () => {
+export function Header() {
   const pathname = usePathname();
-  const { runEmergencyDemo, resetDemo, activeEmergency, isRoutingLoading } = useCareFlow();
-  const [showQR, setShowQR] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/discovery", label: "Doctors", icon: Search },
-    { href: "/voice", label: "SaarthiAI", icon: Radio },
-    { href: "/prescription", label: "Prescription", icon: FileText },
-    { href: "/command-center", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/hospital", label: "Hospital", icon: Building2 },
-    { href: "/ambulance", label: "Ambulance", icon: Truck },
-    { href: "/emergency", label: "Emergency", icon: AlertTriangle },
-    { href: "/guidelines", label: "Safety", icon: ShieldCheck },
+    { href: "/", label: "Home" },
+    { href: "/prescription", label: "Prescription AI" },
+    { href: "/discovery", label: "Doctors" },
+    { href: "/hospital", label: "Hospitals" },
+    { href: "/guidelines", label: "Trust & Safety" },
   ];
 
   return (
-    <>
-      <header className="sticky top-0 z-50 bg-slate-950/90 border-b border-slate-800 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          {/* Logo / Brand */}
-          <div className="flex items-center gap-6">
-            <Link href="/command-center" className="flex items-center gap-2.5 group transition-transform hover:scale-105 active:scale-95 duration-200">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(8,145,178,0.4)] ring-1 ring-cyan-400/50 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.6)] transition-all">
-                <Activity className="w-5 h-5" />
-              </div>
-              <div className="hidden sm:block">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-extrabold text-white tracking-wider text-base group-hover:text-cyan-400 transition-colors">AROGYAGRID</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">
-                    INTELLIGENCE
-                  </span>
-                </div>
-                <div className="text-[10px] text-slate-400 font-mono">
-                  Healthcare Network Routing
-                </div>
-              </div>
-            </Link>
-
-            {/* Desktop Nav links */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map(({ href, label, icon: Icon }) => {
-                const isActive = pathname === href;
-                return (
-                  <Link
-                    key={href}
-                    href={href}
-                    className={`relative px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ease-out transform hover:scale-105 active:scale-95 ${
-                      isActive 
-                        ? "bg-cyan-950/50 text-cyan-50 border border-cyan-700/50 shadow-[0_0_12px_rgba(34,211,238,0.15)] ring-1 ring-cyan-500/30" 
-                        : "text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent hover:border-slate-700"
-                    }`}
-                  >
-                    <Icon className={`w-3.5 h-3.5 transition-colors ${isActive ? "text-cyan-400" : "text-slate-500 group-hover:text-cyan-300"}`} />
-                    <span>{label}</span>
-                    {href === "/emergency" && activeEmergency && (
-                      <span className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute -top-1 -right-1" />
-                    )}
-                  </Link>
-                );
-              })}
-            </nav>
+    <header className="sticky top-0 z-50 w-full bg-[#0B0C10] border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        {/* Logo (Left) */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors">
+            <Activity className="w-5 h-5 text-cyan-400" />
           </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2.5">
-            <button
-              onClick={() => setShowQR(true)}
-              className="hidden sm:flex px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs items-center gap-1.5 shadow-lg border border-slate-700 transition-all hover:scale-105 hover:border-slate-500 active:scale-95"
-            >
-              <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
-              <span>App</span>
-            </button>
-
-            <button
-              onClick={() => runEmergencyDemo()}
-              disabled={isRoutingLoading}
-              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-emerald-950 font-bold text-xs flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] border border-emerald-400/50 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
-            >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span className="hidden sm:inline">{isRoutingLoading ? "Computing Routing..." : "Run Emergency Demo"}</span>
-              <span className="sm:hidden">{isRoutingLoading ? "Computing..." : "Run Demo"}</span>
-            </button>
-
-            <button
-              onClick={resetDemo}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-red-950/50 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-900/50 text-xs transition-all hover:rotate-180 active:scale-95"
-              title="Reset Demo"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </button>
+          <div>
+            <h1 className="text-white font-bold text-xl tracking-tight leading-none">ArogyaGrid</h1>
+            <span className="text-xs text-slate-400">powered by AI</span>
           </div>
+        </Link>
+
+        {/* Desktop Nav Links (Center) */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navLinks.map(({ href, label }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`text-sm font-medium transition-colors relative py-2 ${
+                  isActive ? "text-white" : "text-slate-400 hover:text-white"
+                }`}
+              >
+                {label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400 rounded-t-full" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Icons (Right) */}
+        <div className="hidden lg:flex items-center gap-5 text-slate-400">
+          <button className="hover:text-white transition-colors">
+            <Moon className="w-5 h-5" />
+          </button>
+          <button className="hover:text-white transition-colors relative">
+            <Bell className="w-5 h-5" />
+            <span className="absolute 0 right-0 w-2 h-2 bg-rose-500 rounded-full"></span>
+          </button>
+          <button className="w-8 h-8 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center hover:border-cyan-400/50 transition-colors">
+            <User className="w-4 h-4 text-white" />
+          </button>
         </div>
 
-        {/* Mobile Horizontal Scrolling Nav */}
-        <nav className="lg:hidden border-t border-slate-800 bg-slate-900/80 backdrop-blur-md overflow-x-auto no-scrollbar py-2.5">
-          <div className="flex items-center gap-2.5 px-4 min-w-max">
-            {/* Get App Mobile Button */}
-            <button
-              onClick={() => setShowQR(true)}
-              className="px-3.5 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all transform hover:scale-105 active:scale-95 bg-cyan-900/40 text-cyan-300 border border-cyan-700/60 shadow-[0_0_10px_rgba(34,211,238,0.1)] mr-1"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>App</span>
-            </button>
-            {navLinks.map(({ href, label, icon: Icon }) => {
-              const isActive = pathname === href;
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`relative px-3.5 py-2 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ease-out transform hover:scale-105 active:scale-95 whitespace-nowrap ${
-                    isActive 
-                      ? "bg-cyan-950/50 text-cyan-50 border border-cyan-700/50 shadow-[0_0_12px_rgba(34,211,238,0.15)] ring-1 ring-cyan-500/30" 
-                      : "text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent hover:border-slate-700"
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 transition-colors ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
-                  <span>{label}</span>
-                  {href === "/emergency" && activeEmergency && (
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute -top-1 -right-1" />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-        </nav>
-      </header>
+        {/* Mobile Menu Toggle */}
+        <button 
+          className="lg:hidden text-slate-400 hover:text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
 
-      {/* QR Code Modal */}
-      {showQR && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setShowQR(false)}></div>
-          <div className="relative bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-in zoom-in-95 duration-200">
-            <button 
-              onClick={() => setShowQR(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-1.5 rounded-lg transition-colors active:scale-90"
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-[#0B0C10] border-b border-white/5 shadow-2xl py-4 px-6 flex flex-col gap-4">
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-base font-medium py-2 ${
+                pathname === href ? "text-cyan-400" : "text-slate-400"
+              }`}
             >
-              <X className="w-5 h-5" />
-            </button>
-            <div className="w-16 h-16 bg-gradient-to-tr from-cyan-600 to-emerald-500 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg animate-bounce">
-              <Smartphone className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Download ArogyaGrid</h3>
-            <p className="text-slate-400 text-sm mb-6">Scan this QR code with your phone camera to download and install the official Android App.</p>
-            
-            <div className="bg-white p-4 rounded-xl inline-block mx-auto mb-6 shadow-inner transform transition-transform hover:scale-105 duration-300">
-              <img 
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://mp-online-healthcare-app.vercel.app/ArogyaGrid.apk`} 
-                alt="Download APK QR Code"
-                className="w-48 h-48"
-              />
-            </div>
-            
-            <a 
-              href="/ArogyaGrid.apk" 
-              download
-              className="block w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-bold transition-all shadow-[0_0_15px_rgba(8,145,178,0.4)] hover:shadow-[0_0_25px_rgba(8,145,178,0.6)] transform hover:-translate-y-1 active:translate-y-0"
-            >
-              Download .APK Directly
-            </a>
+              {label}
+            </Link>
+          ))}
+          <div className="h-[1px] bg-white/5 my-2"></div>
+          <div className="flex gap-6 text-slate-400 pb-2">
+            <Moon className="w-5 h-5" />
+            <Bell className="w-5 h-5" />
+            <User className="w-5 h-5" />
           </div>
         </div>
       )}
-    </>
+    </header>
   );
-};
+}

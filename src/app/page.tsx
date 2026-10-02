@@ -1,175 +1,238 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { Mic, Activity, Map, Search, FileText, PhoneCall, Building2, Stethoscope, FileJson, TrendingUp } from 'lucide-react';
-import { VoiceIntake } from '@/components/voice/VoiceIntake';
+import React from "react";
+import Link from "next/link";
+import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic, Bot } from "lucide-react";
+import VoiceIntake from "@/components/intake/VoiceIntake";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-slate-200">
-      {/* Top Navbar / Branding - mimicking the image */}
-      <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
-        <div className="flex items-center gap-2">
-          <Mic className="w-5 h-5 text-cyan-400" />
-          <span className="text-xl font-bold text-white tracking-tight">Saarthi AI</span>
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-          <Link href="/voice" className="hover:text-white transition-colors">Medical AI Suite</Link>
-          <span className="hover:text-white transition-colors cursor-pointer">Chat</span>
-          <span className="hover:text-white transition-colors cursor-pointer">About</span>
-          <span className="hover:text-white transition-colors cursor-pointer">Contact</span>
-        </div>
-        <div>
-          <Link href="/emergency" className="bg-red-600 hover:bg-red-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg shadow-red-900/30 transition-colors">
-            Emergency Triage
-          </Link>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-[#0B0C10] font-sans">
+      
       {/* Hero Section */}
-      <section className="text-center pt-16 pb-12 px-4 max-w-5xl mx-auto">
-        <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
-          AI-Powered Healthcare <br className="hidden md:block"/>
-          Solutions for Modern <br className="hidden md:block"/>
-          Medical Practices
-        </h1>
-        <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
-          Transform medical workflows with intelligent AI tools designed to reduce administrative burdens. Focus more on patient care while we handle the rest.
-        </p>
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-slate-200 transition-colors">
-            Request Demo
-          </button>
-          <span className="text-sm font-medium text-slate-400 hover:text-white cursor-pointer transition-colors px-4">
-            Watch Video
-          </span>
-        </div>
-      </section>
+      <section className="relative pt-20 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        
+        {/* Hero Left Content */}
+        <div className="flex-1 space-y-8 z-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm font-medium text-slate-300">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            India's #1 Clinical AI Platform
+          </div>
+          
+          <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+            Your Personal <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              Healthcare AI
+            </span>
+          </h1>
+          
+          <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+            From instant AI prescription parsing to live hospital bed availability and emergency routing. Connect seamlessly with government registries and top specialists.
+          </p>
+          
+          <div className="flex items-center gap-4 pt-4">
+            <Link 
+              href="/prescription" 
+              className="px-6 py-3 rounded-xl bg-[#1F2833] hover:bg-[#283442] text-white font-medium flex items-center gap-2 transition-colors border border-white/5"
+            >
+              Analyze Prescription <ArrowRight className="w-4 h-4 text-slate-400" />
+            </Link>
+            <Link 
+              href="/discovery" 
+              className="px-6 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-medium transition-colors border border-cyan-500/20"
+            >
+              Find Doctors
+            </Link>
+          </div>
 
-      {/* Embedded Voice Intake for immediate emergency access */}
-      <section className="max-w-5xl mx-auto px-4 mb-20 relative z-10">
-        <div className="bg-[#121212] rounded-3xl border border-slate-800/80 shadow-2xl overflow-hidden">
-          <div className="p-6 md:p-8 bg-gradient-to-b from-[#1a1a1a] to-[#121212]">
-            <VoiceIntake />
+          <div className="flex items-center gap-6 pt-6 border-t border-white/5 w-fit">
+            <div className="flex -space-x-3">
+              <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-[#0B0C10] z-30"></div>
+              <div className="w-10 h-10 rounded-full bg-slate-700 border-2 border-[#0B0C10] z-20"></div>
+              <div className="w-10 h-10 rounded-full bg-slate-600 border-2 border-[#0B0C10] z-10"></div>
+            </div>
+            <div>
+              <div className="text-white font-bold text-sm">25+ Live Hospitals</div>
+              <div className="flex items-center gap-1 text-amber-400 mt-0.5">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-current" />)}
+                <span className="text-xs text-slate-400 ml-1">Real-time Data</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Hero Right Visuals (Voice AI / Main Graphic) */}
+        <div className="flex-1 relative w-full max-w-xl lg:max-w-none">
+          <div className="absolute -top-6 -left-6 z-20 bg-[#1F2833] border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-2xl">
+             <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+               <Activity className="w-4 h-4 text-emerald-400" />
+             </div>
+             <div>
+               <div className="text-xs text-slate-400">System Status</div>
+               <div className="text-sm font-bold text-white flex items-center gap-1">
+                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Live Routing Active
+               </div>
+             </div>
+          </div>
+
+          <div className="bg-[#11131A] border border-white/10 rounded-3xl overflow-hidden shadow-2xl relative z-10">
+            <div className="p-8">
+              <h3 className="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                <Bot className="w-6 h-6 text-cyan-400" /> Voice Intake Assistant
+              </h3>
+              <p className="text-slate-400 text-sm mb-8">Speak naturally about your symptoms. ArogyaGrid will automatically transcribe and route your request to the appropriate medical facility.</p>
+              <VoiceIntake />
+            </div>
+          </div>
+          
+          {/* Decorative Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 blur-[100px] -z-10 rounded-full mix-blend-screen pointer-events-none"></div>
+        </div>
       </section>
 
-      {/* Features Grid (Toolkit) */}
-      <section className="py-16 px-4 max-w-7xl mx-auto border-t border-slate-800/50">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white tracking-tight">ArogyaGrid Toolkit</h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
-            Streamline your practice with advanced AI tools designed to reduce administrative tasks and enhance patient care. Experience the future of healthcare management today.
-          </p>
+      {/* Explore Grid Section */}
+      <section className="py-20 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div className="flex items-center justify-between mb-12">
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-3">Explore by Service</h2>
+            <p className="text-slate-400">Find specialized medical routing and AI analysis tools tailored to your needs.</p>
+          </div>
+          <Link href="/services" className="hidden sm:flex px-4 py-2 rounded-full bg-white/5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors border border-white/5 items-center gap-2">
+            View All Services <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Link href="/discovery" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <Search className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          
+          {/* Card 1 */}
+          <Link href="/prescription" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-cyan-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FileText className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-cyan-500/20 text-cyan-400 text-[10px] font-bold uppercase tracking-wider bg-cyan-500/5">
+                  Local AI
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Prescription AI</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Doctor Discovery</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Fair and unbiased doctor ranking with instant virtual video calls and physical appointments mapped to government registries.
-            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-cyan-400 transition-colors">Analyze Document</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-cyan-400" />
+              </div>
+            </div>
           </Link>
 
-          <Link href="/command-center" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <Activity className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+          {/* Card 2 */}
+          <Link href="/discovery" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-indigo-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Search className="w-6 h-6 text-indigo-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-indigo-500/20 text-indigo-400 text-[10px] font-bold uppercase tracking-wider bg-indigo-500/5">
+                  Verified
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Doctor Discovery</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Command Center</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Live hospital network telemetry and readiness monitoring. Optimal routing matrix for active emergencies and active beds.
-            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-indigo-400 transition-colors">Book Consult</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-indigo-400" />
+              </div>
+            </div>
           </Link>
 
-          <Link href="/prescription" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <FileText className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+          {/* Card 3 */}
+          <Link href="/emergency" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-rose-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <PhoneCall className="w-6 h-6 text-rose-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-rose-500/20 text-rose-400 text-[10px] font-bold uppercase tracking-wider bg-rose-500/5">
+                  Live Dispatch
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Emergency Routing</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Prescription AI</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Analyzes physical prescriptions and generates detailed medication reminders and nearby pharmacy availability.
-            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-rose-400 transition-colors">Call Ambulance</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-rose-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-rose-400" />
+              </div>
+            </div>
           </Link>
 
-          <Link href="/emergency" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <PhoneCall className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+          {/* Card 4 */}
+          <Link href="/command-center" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-emerald-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Building2 className="w-6 h-6 text-emerald-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider bg-emerald-500/5">
+                  Dashboard
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Command Center</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Emergency Routing</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Dispatches active ambulances, parses live critical symptoms, and determines optimal care paths immediately.
-            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-emerald-400 transition-colors">View Capacity</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-400" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Card 5 */}
+          <Link href="/voice" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-amber-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mic className="w-6 h-6 text-amber-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-amber-500/20 text-amber-400 text-[10px] font-bold uppercase tracking-wider bg-amber-500/5">
+                  AI Scribe
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Voice AI Scribe</h3>
+            </div>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-amber-400 transition-colors">Start Dictation</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-amber-400" />
+              </div>
+            </div>
           </Link>
           
-          <Link href="/hospital" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <Building2 className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+          {/* Card 6 */}
+          <Link href="/hospital" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-fuchsia-500/30 transition-all cursor-pointer h-[240px]">
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Activity className="w-6 h-6 text-fuchsia-400" />
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-fuchsia-500/20 text-fuchsia-400 text-[10px] font-bold uppercase tracking-wider bg-fuchsia-500/5">
+                  Admin Tools
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Facility Manager</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Facility Manager</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Tools for facility administrators to manage live capacity, ER occupancy, and active specialist availability.
-            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-sm font-medium text-slate-400 group-hover:text-fuchsia-400 transition-colors">Manage Resources</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fuchsia-500/20 transition-colors">
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-fuchsia-400" />
+              </div>
+            </div>
           </Link>
 
-          <Link href="/voice" className="bg-[#121212] border border-slate-800/80 p-6 rounded-2xl hover:bg-slate-900 transition-all group">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-900/50 transition-colors">
-              <Mic className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2">Voice AI Scribe</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Converts audio recordings into comprehensive, ready-to-use medical reports. Perfect for post-consultation documentation.
-            </p>
-          </Link>
-        </div>
-      </section>      {/* ArogyaGrid Live State Map */}
-      <section className="py-0 relative border-y border-slate-900/80 bg-slate-950">
-        <div className="w-full h-[50vh] md:h-[600px] bg-slate-900 relative">
-          <div className="absolute top-4 left-4 z-10 bg-slate-950/80 backdrop-blur border border-slate-800 text-white px-4 py-2 rounded-lg shadow-2xl">
-            <h3 className="font-bold text-cyan-400">Live State Network</h3>
-            <p className="text-xs text-slate-400">Madhya Pradesh Jurisdiction</p>
-          </div>
-          <iframe 
-            src="https://maps.google.com/maps?q=Madhya%20Pradesh,%20India&t=m&z=6&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(85%)' }} 
-            allowFullScreen={false} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="ArogyaGrid Live Map"
-          />
         </div>
       </section>
 
-      {/* Partners / Government Links */}
-      <section className="py-16 bg-[#0a0a0a] border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-[0.2em] mb-10">OUR LOYAL PARTNERS & REGISTRIES</h4>
-          <div className="flex flex-wrap items-center justify-center gap-6 opacity-60">
-            <div className="bg-[#121212] border border-slate-800 px-8 py-4 rounded-xl flex items-center justify-center min-w-[160px] grayscale hover:grayscale-0 transition-all">
-              <span className="font-bold text-xl text-slate-300 tracking-tight">ABDM</span>
-            </div>
-            <div className="bg-[#121212] border border-slate-800 px-8 py-4 rounded-xl flex items-center justify-center min-w-[160px] grayscale hover:grayscale-0 transition-all">
-              <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2">
-                <Stethoscope className="w-5 h-5" /> eSanjeevani
-              </span>
-            </div>
-            <div className="bg-[#121212] border border-slate-800 px-8 py-4 rounded-xl flex items-center justify-center min-w-[160px] grayscale hover:grayscale-0 transition-all">
-              <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2">
-                <FileJson className="w-5 h-5" /> HFR Registry
-              </span>
-            </div>
-            <div className="bg-[#121212] border border-slate-800 px-8 py-4 rounded-xl flex items-center justify-center min-w-[160px] grayscale hover:grayscale-0 transition-all">
-              <span className="font-bold text-xl text-slate-300 tracking-tight">NMC</span>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
