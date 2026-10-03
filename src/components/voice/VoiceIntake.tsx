@@ -31,12 +31,30 @@ function IntakeCard({ intake }: { intake: PatientIntake }) {
       </div>
 
       <div className="intake-grid">
-        <div><span>Name</span><strong>{intake.patient_name || "Not provided"}</strong></div>
-        <div><span>Age</span><strong>{intake.age ?? "Not provided"}</strong></div>
-        <div><span>Sex</span><strong>{intake.sex}</strong></div>
-        <div><span>Onset</span><strong>{intake.onset}</strong></div>
-        <div><span>Duration</span><strong>{intake.duration || "Not provided"}</strong></div>
-        <div><span>Main complaint</span><strong>{intake.main_complaint || "Not provided"}</strong></div>
+        <div>
+          <span>Name</span>
+          <strong>{intake.patient_name || "Not provided"}</strong>
+        </div>
+        <div>
+          <span>Age</span>
+          <strong>{intake.age ?? "Not provided"}</strong>
+        </div>
+        <div>
+          <span>Sex</span>
+          <strong>{intake.sex}</strong>
+        </div>
+        <div>
+          <span>Onset</span>
+          <strong>{intake.onset}</strong>
+        </div>
+        <div>
+          <span>Duration</span>
+          <strong>{intake.duration || "Not provided"}</strong>
+        </div>
+        <div>
+          <span>Main complaint</span>
+          <strong>{intake.main_complaint || "Not provided"}</strong>
+        </div>
       </div>
 
       <div className="detail-block">
@@ -44,10 +62,14 @@ function IntakeCard({ intake }: { intake: PatientIntake }) {
         {intake.symptoms.length ? (
           <div className="tag-row">
             {intake.symptoms.map((symptom) => (
-              <span className="tag" key={symptom}>{symptom}</span>
+              <span className="tag" key={symptom}>
+                {symptom}
+              </span>
             ))}
           </div>
-        ) : <p className="muted">None reported.</p>}
+        ) : (
+          <p className="muted">None reported.</p>
+        )}
       </div>
 
       <div className="detail-block">
@@ -56,7 +78,9 @@ function IntakeCard({ intake }: { intake: PatientIntake }) {
       </div>
 
       <div className="safety-note">
-        This information is AI-generated from the conversation. Verify it with the patient and a qualified healthcare professional. ArogyaGrid does not make a diagnosis in this module.
+        This information is AI-generated from the conversation. Verify it with
+        the patient and a qualified healthcare professional. ArogyaGrid does not
+        make a diagnosis in this module.
       </div>
     </section>
   );
@@ -150,16 +174,27 @@ function VoiceControls({
       </div>
 
       {active || busy ? (
-        <button className="secondary-button danger" type="button" onClick={onStop} disabled={busy}>
+        <button
+          className="secondary-button danger"
+          type="button"
+          onClick={onStop}
+          disabled={busy}
+        >
           {busy ? "Connecting..." : "End conversation"}
         </button>
       ) : (
         <div className="voice-actions-row">
           <button className="primary-button" type="button" onClick={onStart}>
-            {state === "ended" ? "Start new conversation" : "Start conversation"}
+            {state === "ended"
+              ? "Start new conversation"
+              : "Start conversation"}
           </button>
           {state === "ended" && (
-            <button className="secondary-button" type="button" onClick={onClear}>
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={onClear}
+            >
               Clear transcript
             </button>
           )}
@@ -175,7 +210,9 @@ export function VoiceIntake() {
   const [state, setState] = React.useState<VoiceSessionState>("idle");
   const [conversation, setConversation] = React.useState<VoiceMessage[]>([]);
   const [intake, setIntake] = React.useState<PatientIntake | null>(null);
-  const [summaryStatus, setSummaryStatus] = React.useState<"idle" | "loading" | "error">("idle");
+  const [summaryStatus, setSummaryStatus] = React.useState<
+    "idle" | "loading" | "error"
+  >("idle");
   const [summaryError, setSummaryError] = React.useState<string | null>(null);
   const [agentError, setAgentError] = React.useState<string | null>(null);
   const clientRef = React.useRef<GeminiLiveClient | null>(null);
@@ -225,7 +262,10 @@ export function VoiceIntake() {
 
   async function generateSummary() {
     const transcript = conversation
-      .map((entry) => `${entry.role === "user" ? "USER" : "SAARTHI"}: ${entry.content}`)
+      .map(
+        (entry) =>
+          `${entry.role === "user" ? "USER" : "SAARTHI"}: ${entry.content}`,
+      )
       .join("\n");
 
     if (!transcript.trim()) return;
@@ -253,28 +293,33 @@ export function VoiceIntake() {
       setIntake(payload.data);
       setSummaryStatus("idle");
       // Trigger dynamic integration!
-      const triageCategory = evaluateRedFlags(payload.data); payload.data.triageCategory = triageCategory; if (triageCategory === "RED") { processEmergency(payload.data); router.push("/emergency"); } else { router.push("/discovery"); }
+      const triageCategory = evaluateRedFlags(payload.data);
+      payload.data.triageCategory = triageCategory;
+      if (triageCategory === "RED") {
+        processEmergency(payload.data);
+        router.push("/emergency");
+      } else {
+        router.push("/discovery");
+      }
     } catch (error) {
       setSummaryStatus("error");
-      setSummaryError(error instanceof Error ? error.message : "Unable to create intake summary.");
+      setSummaryError(
+        error instanceof Error
+          ? error.message
+          : "Unable to create intake summary.",
+      );
     }
   }
 
   return (
     <div className="voice-page-embedded w-full max-w-6xl mx-auto">
       <div className="flex flex-col items-center py-8">
-        <div className="text-center mb-8">
-          <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">SARTHIAI</p>
-          <h2 className="text-3xl font-bold text-white mb-3">Speak naturally.</h2>
-          <p className="text-slate-400 text-sm max-w-lg mx-auto">
-            AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic, with escalation to emergency services when high-risk features are detected or when uncertainty exists. The system does not diagnose or replace a medical professional.
-          </p>
-        </div>
-
         <div className="w-full max-w-xl mx-auto bg-[#0f0f0f] border border-slate-800 rounded-3xl p-6 shadow-2xl">
           <div className="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
             <div>
-              <h3 className="font-bold text-white text-lg">Patient Intake Session</h3>
+              <h3 className="font-bold text-white text-lg">
+                Patient Intake Session
+              </h3>
             </div>
             <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-900/50 px-2 py-1 rounded-full flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -305,33 +350,66 @@ export function VoiceIntake() {
           <div className="workflow-list">
             <div className="workflow-step active">
               <b>01</b>
-              <div><strong>Listen</strong><span>The AI receives microphone audio in realtime.</span></div>
+              <div>
+                <strong>Listen</strong>
+                <span>The AI receives microphone audio in realtime.</span>
+              </div>
             </div>
             <div className="workflow-step">
               <b>02</b>
-              <div><strong>Understand</strong><span>The AI asks concise follow-ups and organizes the patient&apos;s story.</span></div>
+              <div>
+                <strong>Understand</strong>
+                <span>
+                  The AI asks concise follow-ups and organizes the
+                  patient&apos;s story.
+                </span>
+              </div>
             </div>
             <div className="workflow-step">
               <b>03</b>
-              <div><strong>Review</strong><span>The completed conversation can be converted into structured intake JSON.</span></div>
+              <div>
+                <strong>Review</strong>
+                <span>
+                  The completed conversation can be converted into structured
+                  intake JSON.
+                </span>
+              </div>
             </div>
             <div className="workflow-step muted-step">
               <b>04</b>
-              <div><strong>Safety Screening</strong><span>Rule-based evaluation using DGHS clinical red flags to categorize risk into RED, YELLOW, or GREEN.</span></div>
+              <div>
+                <strong>Safety Screening</strong>
+                <span>
+                  Rule-based evaluation using DGHS clinical red flags to
+                  categorize risk into RED, YELLOW, or GREEN.
+                </span>
+              </div>
             </div>
           </div>
 
           {summaryStatus === "loading" ? (
-          <div style={{ textAlign: 'center', padding: '1rem', color: '#a1a1aa' }}>
-            Auto-generating structured intake...
-          </div>
-        ) : (
-          <div style={{ textAlign: 'center', padding: '1rem', color: '#71717a', fontSize: '13px' }}>
-            The structured intake will generate automatically when you end the conversation.
-          </div>
-        )}
+            <div
+              style={{ textAlign: "center", padding: "1rem", color: "#a1a1aa" }}
+            >
+              Auto-generating structured intake...
+            </div>
+          ) : (
+            <div
+              style={{
+                textAlign: "center",
+                padding: "1rem",
+                color: "#71717a",
+                fontSize: "13px",
+              }}
+            >
+              The structured intake will generate automatically when you end the
+              conversation.
+            </div>
+          )}
 
-          {summaryStatus === "error" && <p className="error-text">{summaryError}</p>}
+          {summaryStatus === "error" && (
+            <p className="error-text">{summaryError}</p>
+          )}
         </section>
       </div>
 
@@ -340,4 +418,3 @@ export function VoiceIntake() {
     </div>
   );
 }
-
