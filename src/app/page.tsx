@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic } from "lucide-react";
+import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic, Shield, Lock } from "lucide-react";
 import { VoiceIntake } from "@/components/voice/VoiceIntake";
 
 export default function Home() {
@@ -227,6 +227,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Safety & Guidelines Section */}
+      <section className="py-20 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white mb-3">Trust, Safety & Guidelines</h2>
+          <p className="text-slate-400">ArogyaGrid is built on a foundation of clinical safety and data privacy.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-cyan-500/30 transition-all cursor-pointer shadow-lg hover:shadow-cyan-500/10 hover:scale-[1.02]">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6">
+              <Shield className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Safety Protocols</h3>
+            <p className="text-sm text-slate-400">View our emergency routing safety logic and clinical red-flag protocols.</p>
+          </Link>
+          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-indigo-500/30 transition-all cursor-pointer shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.02]">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6">
+              <FileText className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Clinical Guidelines</h3>
+            <p className="text-sm text-slate-400">Understand the triage algorithms and how SarthiAi makes routing decisions.</p>
+          </Link>
+          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-emerald-500/30 transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.02]">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6">
+              <Lock className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Data Privacy</h3>
+            <p className="text-sm text-slate-400">Learn how your ephemeral session data is secured and automatically wiped.</p>
+          </Link>
+        </div>
+      </section>
+
+      {/* Live State Map Section */}
+      <section className="py-20 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-2">Live Grid Map</h2>
+            <p className="text-slate-400">Monitoring real-time healthcare infrastructure across Madhya Pradesh.</p>
+          </div>
+          <div className="flex items-center gap-2 bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-xs font-bold text-emerald-400 tracking-wider">LIVE DATA</span>
+          </div>
+        </div>
+        <div className="w-full h-[500px] rounded-3xl overflow-hidden border-2 border-white/10 shadow-[0_0_50px_rgba(34,211,238,0.1)] relative hover:border-cyan-500/30 transition-colors duration-500 group">
+          <div className="absolute inset-0 pointer-events-none rounded-3xl ring-1 ring-inset ring-white/5 z-10"></div>
+          <iframe 
+            src="https://maps.google.com/maps?q=Madhya%20Pradesh,%20India&t=m&z=6&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(85%) opacity(0.85)' }} 
+            allowFullScreen={false} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="ArogyaGrid Live Map"
+            className="group-hover:opacity-100 transition-opacity duration-500"
+          />
+        </div>
+      </section>
       {/* Verified Partners / Government Links */}
       <section className="py-16 bg-[#0a0a0a] border-t border-slate-900 relative overflow-hidden">
         {/* Glow effect */}
