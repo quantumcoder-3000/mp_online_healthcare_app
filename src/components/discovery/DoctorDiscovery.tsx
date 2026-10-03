@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Search, MapPin, Video, User, Info, AlertTriangle, Calendar, ExternalLink, X, PhoneCall, Check } from "lucide-react";
+import { Search, MapPin, Video, User, Info, AlertTriangle, Calendar, ExternalLink, X, PhoneCall, Check, Activity, ArrowRight } from "lucide-react";
 
 interface Doctor {
   doctor_id: string;
