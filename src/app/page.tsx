@@ -291,7 +291,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-cyan-900/20 blur-[60px] -z-10 rounded-full"></div>
         
         <div className="max-w-7xl mx-auto px-4 text-center z-10">
-          <h4 className="text-xs font-semibold text-cyan-500/80 uppercase tracking-[0.2em] mb-10">Verified Integration Partners & Govt Registries</h4>
+          <h4 className="text-xs font-semibold text-cyan-500/80 uppercase tracking-[0.2em] mb-10">References & Guidelines</h4>
           
           <div className="flex flex-wrap items-center justify-center gap-6">
             
@@ -324,5 +324,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
