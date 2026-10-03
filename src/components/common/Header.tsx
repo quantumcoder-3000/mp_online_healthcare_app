@@ -12,7 +12,7 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/prescription", label: "Prescription AI" },
+    { href: "/#sarthiai", label: "SarthiAi" },{ href: "/prescription", label: "Prescription AI" },
     { href: "/discovery", label: "Doctors" },
     { href: "/hospital", label: "Hospitals" },
     { href: "/emergency", label: "Ambulance" },

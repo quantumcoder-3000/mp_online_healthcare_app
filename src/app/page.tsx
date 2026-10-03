@@ -105,14 +105,15 @@ export default function Home() {
       </section>
 
       {/* Full Width SarthiAi Section */}
-      <section className="pb-24 px-6 max-w-5xl mx-auto">
-        <div className="bg-[#11131A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl relative">
+      <section id="sarthiai" className="pb-24 px-6 max-w-5xl mx-auto">
+        <div className="bg-[#11131A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl relative transition-transform duration-500 hover:scale-[1.01] hover:border-cyan-500/30 group">
           {/* Subtle background glow for the container */}
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent group-hover:via-cyan-400 transition-all duration-500"></div>
           
           <div className="p-8 lg:p-12">
             <div className="text-center mb-10">
-              <h2 className="text-2xl font-bold text-white mb-3">Speak naturally.</h2>
+              <h2 className="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent mb-4 tracking-tight drop-shadow-lg">SarthiAi</h2>
+              <h3 className="text-xl font-semibold text-white mb-3">Speak naturally.</h3>
               <p className="text-slate-400 max-w-2xl mx-auto text-sm">
                 AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic. SarthiAi automatically transcribes and routes your request.
               </p>
@@ -223,6 +224,42 @@ export default function Home() {
             </div>
           </Link>
 
+        </div>
+      </section>
+
+      {/* Verified Partners / Government Links */}
+      <section className="py-16 bg-[#0a0a0a] border-t border-slate-900 relative overflow-hidden">
+        {/* Glow effect */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-cyan-900/20 blur-[60px] -z-10 rounded-full"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 text-center z-10">
+          <h4 className="text-xs font-semibold text-cyan-500/80 uppercase tracking-[0.2em] mb-10">Verified Integration Partners & Govt Registries</h4>
+          
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            
+            <a href="https://abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-cyan-500/40 shadow-lg hover:shadow-cyan-500/10 cursor-pointer">
+              <span className="font-bold text-xl text-slate-300 tracking-tight group-hover:text-white">ABDM</span>
+            </a>
+            
+            <a href="https://esanjeevani.mohfw.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-emerald-500/40 shadow-lg hover:shadow-emerald-500/10 cursor-pointer">
+              <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-emerald-400">
+                <Activity className="w-5 h-5" /> eSanjeevani
+              </span>
+            </a>
+            
+            <a href="https://facility.abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-indigo-500/40 shadow-lg hover:shadow-indigo-500/10 cursor-pointer">
+              <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-indigo-400">
+                <Building2 className="w-5 h-5" /> HFR Registry
+              </span>
+            </a>
+            
+            <a href="https://www.nmc.org.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-amber-500/40 shadow-lg hover:shadow-amber-500/10 cursor-pointer">
+              <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-amber-400">
+                <Star className="w-5 h-5" /> NMC
+              </span>
+            </a>
+            
+          </div>
         </div>
       </section>
 
