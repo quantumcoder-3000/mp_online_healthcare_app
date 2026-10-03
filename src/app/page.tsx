@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic, Bot } from "lucide-react";
+import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic } from "lucide-react";
 import { VoiceIntake } from "@/components/voice/VoiceIntake";
 
 export default function Home() {
@@ -10,11 +10,11 @@ export default function Home() {
     <div className="min-h-screen bg-[#0B0C10] font-sans">
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+      <section className="relative pt-24 pb-16 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
         
         {/* Hero Left Content */}
-        <div className="flex-1 space-y-8 z-10">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm font-medium text-slate-300">
+        <div className="flex-1 space-y-8 z-10 text-center lg:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm font-medium text-slate-300 mx-auto lg:mx-0">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
             India's #1 Clinical AI Platform
           </div>
@@ -26,11 +26,11 @@ export default function Home() {
             </span>
           </h1>
           
-          <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+          <p className="text-lg text-slate-400 max-w-xl leading-relaxed mx-auto lg:mx-0">
             From instant AI prescription parsing to live hospital bed availability and emergency routing. Connect seamlessly with government registries and top specialists.
           </p>
           
-          <div className="flex items-center gap-4 pt-4">
+          <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
             <Link 
               href="/prescription" 
               className="px-6 py-3 rounded-xl bg-[#1F2833] hover:bg-[#283442] text-white font-medium flex items-center gap-2 transition-colors border border-white/5"
@@ -45,13 +45,13 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-6 pt-6 border-t border-white/5 w-fit">
+          <div className="flex items-center justify-center lg:justify-start gap-6 pt-6 border-t border-white/5 w-fit mx-auto lg:mx-0">
             <div className="flex -space-x-3">
               <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-[#0B0C10] z-30"></div>
               <div className="w-10 h-10 rounded-full bg-slate-700 border-2 border-[#0B0C10] z-20"></div>
               <div className="w-10 h-10 rounded-full bg-slate-600 border-2 border-[#0B0C10] z-10"></div>
             </div>
-            <div>
+            <div className="text-left">
               <div className="text-white font-bold text-sm">25+ Live Hospitals</div>
               <div className="flex items-center gap-1 text-amber-400 mt-0.5">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-current" />)}
@@ -61,11 +61,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Right Visuals (Voice AI / Main Graphic) */}
-        <div className="flex-1 relative w-full max-w-xl lg:max-w-none">
-          <div className="absolute -top-6 -left-6 z-20 bg-[#1F2833] border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-2xl">
+        {/* Hero Right Visuals (AI Voice Sphere) */}
+        <div className="flex-1 relative w-full flex items-center justify-center h-[400px]">
+          {/* Status Badge */}
+          <div className="absolute top-0 right-0 lg:right-10 z-30 bg-[#1F2833] border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-2xl">
              <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-               <Activity className="w-4 h-4 text-emerald-400" />
+               <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
              </div>
              <div>
                <div className="text-xs text-slate-400">System Status</div>
@@ -75,18 +76,47 @@ export default function Home() {
              </div>
           </div>
 
-          <div className="bg-[#11131A] border border-white/10 rounded-3xl overflow-hidden shadow-2xl relative z-10">
-            <div className="p-8">
-              <h3 className="text-white font-bold text-xl mb-4 flex items-center gap-2">
-                <Bot className="w-6 h-6 text-cyan-400" /> Voice Intake Assistant
-              </h3>
-              <p className="text-slate-400 text-sm mb-8">Speak naturally about your symptoms. ArogyaGrid will automatically transcribe and route your request to the appropriate medical facility.</p>
+          {/* Glowing Sphere */}
+          <div className="relative w-72 h-72 flex items-center justify-center">
+            {/* Outer Glows */}
+            <div className="absolute inset-0 rounded-full bg-cyan-500/10 blur-[80px] animate-pulse"></div>
+            <div className="absolute inset-4 rounded-full bg-indigo-500/20 blur-[60px] animate-pulse" style={{ animationDelay: "1s" }}></div>
+            <div className="absolute inset-8 rounded-full bg-purple-500/20 blur-[40px] animate-pulse" style={{ animationDelay: "2s" }}></div>
+            
+            {/* Core Sphere */}
+            <div className="relative w-40 h-40 rounded-full bg-gradient-to-br from-cyan-400 via-indigo-500 to-purple-600 shadow-[0_0_60px_rgba(99,102,241,0.4)] flex items-center justify-center overflow-hidden z-10 group">
+              {/* Inner Core Animation */}
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent group-hover:rotate-180 transition-transform duration-1000 ease-in-out"></div>
+              
+              <Mic className="w-16 h-16 text-white drop-shadow-2xl z-20" />
+              
+              {/* Ripple Rings */}
+              <div className="absolute inset-0 rounded-full border border-white/20 scale-[1.2] animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+              <div className="absolute inset-0 rounded-full border border-white/10 scale-[1.5] animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" style={{ animationDelay: "0.5s" }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Width Voice Intake Section */}
+      <section className="pb-24 px-6 max-w-5xl mx-auto">
+        <div className="bg-[#11131A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl relative">
+          {/* Subtle background glow for the container */}
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+          
+          <div className="p-8 lg:p-12">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-white mb-3">Speak naturally.</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-sm">
+                AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic. ArogyaGrid automatically transcribes and routes your request.
+              </p>
+            </div>
+            
+            <div className="max-w-3xl mx-auto bg-[#0B0C10] rounded-2xl border border-white/5 p-2 shadow-inner">
               <VoiceIntake />
             </div>
           </div>
-          
-          {/* Decorative Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 blur-[100px] -z-10 rounded-full mix-blend-screen pointer-events-none"></div>
         </div>
       </section>
 
@@ -184,48 +214,6 @@ export default function Home() {
               <span className="text-sm font-medium text-slate-400 group-hover:text-emerald-400 transition-colors">View Capacity</span>
               <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
                 <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-400" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Card 5 */}
-          <Link href="/voice" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-amber-500/30 transition-all cursor-pointer h-[240px]">
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mic className="w-6 h-6 text-amber-400" />
-                </div>
-                <div className="px-2.5 py-1 rounded-full border border-amber-500/20 text-amber-400 text-[10px] font-bold uppercase tracking-wider bg-amber-500/5">
-                  AI Scribe
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Voice AI Scribe</h3>
-            </div>
-            <div className="flex items-center justify-between mt-auto">
-              <span className="text-sm font-medium text-slate-400 group-hover:text-amber-400 transition-colors">Start Dictation</span>
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-amber-400" />
-              </div>
-            </div>
-          </Link>
-          
-          {/* Card 6 */}
-          <Link href="/hospital" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-fuchsia-500/30 transition-all cursor-pointer h-[240px]">
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Activity className="w-6 h-6 text-fuchsia-400" />
-                </div>
-                <div className="px-2.5 py-1 rounded-full border border-fuchsia-500/20 text-fuchsia-400 text-[10px] font-bold uppercase tracking-wider bg-fuchsia-500/5">
-                  Admin Tools
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Facility Manager</h3>
-            </div>
-            <div className="flex items-center justify-between mt-auto">
-              <span className="text-sm font-medium text-slate-400 group-hover:text-fuchsia-400 transition-colors">Manage Resources</span>
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fuchsia-500/20 transition-colors">
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-fuchsia-400" />
               </div>
             </div>
           </Link>
