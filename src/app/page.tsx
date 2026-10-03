@@ -130,9 +130,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-white mb-3">Explore by Service</h2>
             <p className="text-slate-400">Find specialized medical routing and AI analysis tools tailored to your needs.</p>
           </div>
-          <Link href="/services" className="hidden sm:flex px-4 py-2 rounded-full bg-white/5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors border border-white/5 items-center gap-2">
-            View All Services <ArrowRight className="w-4 h-4" />
-          </Link>
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
