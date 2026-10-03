@@ -285,8 +285,10 @@ export const DoctorDiscovery = () => {
       )}
       {/* Booking Modal Prototype */}
       {selectedDoctor && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl shadow-cyan-900/20 flex flex-col max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-all duration-500">
+          <div
+            className={`bg-slate-900 border border-slate-800 rounded-2xl w-full overflow-hidden shadow-2xl shadow-cyan-900/20 flex flex-col transition-all duration-500 ${bookingStep === "in_call" ? "max-w-6xl h-[90vh]" : "max-w-2xl max-h-[90vh]"}`}
+          >
             <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950">
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-cyan-500" />
@@ -300,7 +302,9 @@ export const DoctorDiscovery = () => {
               </button>
             </div>
 
-            <div className="p-6 flex-1 overflow-y-auto">
+            <div
+              className={`flex-1 overflow-y-auto ${bookingStep === "in_call" ? "p-0" : "p-6"}`}
+            >
               {bookingStep === "select_type" && (
                 <div className="space-y-6">
                   <div className="bg-slate-950 rounded-xl p-4 border border-slate-800">
@@ -620,7 +624,7 @@ export const DoctorDiscovery = () => {
               )}
 
               {bookingStep === "in_call" && (
-                <div className="flex flex-col h-[75vh] min-h-[500px] bg-black rounded-xl overflow-hidden relative border border-slate-800">
+                <div className="flex flex-col w-full h-full min-h-[600px] bg-black rounded-xl overflow-hidden relative border border-slate-800 flex-1">
                   <iframe
                     src={`https://meet.jit.si/ArogyaGridDemo_${selectedDoctor.doctor_id}_Room`}
                     allow="camera; microphone; fullscreen; display-capture"
