@@ -292,23 +292,23 @@ export default function Home() {
           
           <div className="flex flex-wrap items-center justify-center gap-6">
             
-            <a href="https://abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-cyan-500/40 shadow-lg hover:shadow-cyan-500/10 cursor-pointer">
+            <a href="https://abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-gradient-to-br from-[#11131A] to-[#11131A] hover:from-cyan-950/40 border border-white/5 hover:border-cyan-500/30 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] cursor-pointer">
               <span className="font-bold text-xl text-slate-300 tracking-tight group-hover:text-white">ABDM</span>
             </a>
             
-            <a href="https://esanjeevani.mohfw.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-emerald-500/40 shadow-lg hover:shadow-emerald-500/10 cursor-pointer">
+            <a href="https://esanjeevani.mohfw.gov.in" target="_blank" rel="noreferrer" className="group bg-gradient-to-br from-[#11131A] to-[#11131A] hover:from-emerald-950/40 border border-white/5 hover:border-emerald-500/30 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] cursor-pointer">
               <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-emerald-400">
                 <Activity className="w-5 h-5" /> eSanjeevani
               </span>
             </a>
             
-            <a href="https://facility.abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-indigo-500/40 shadow-lg hover:shadow-indigo-500/10 cursor-pointer">
+            <a href="https://facility.abdm.gov.in" target="_blank" rel="noreferrer" className="group bg-gradient-to-br from-[#11131A] to-[#11131A] hover:from-indigo-950/40 border border-white/5 hover:border-indigo-500/30 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] cursor-pointer">
               <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-indigo-400">
                 <Building2 className="w-5 h-5" /> HFR Registry
               </span>
             </a>
             
-            <a href="https://www.nmc.org.in" target="_blank" rel="noreferrer" className="group bg-[#11131A] border border-white/5 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all hover:scale-105 hover:border-amber-500/40 shadow-lg hover:shadow-amber-500/10 cursor-pointer">
+            <a href="https://www.nmc.org.in" target="_blank" rel="noreferrer" className="group bg-gradient-to-br from-[#11131A] to-[#11131A] hover:from-amber-950/40 border border-white/5 hover:border-amber-500/30 px-8 py-5 rounded-2xl flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] cursor-pointer">
               <span className="font-bold text-xl text-slate-300 tracking-tight flex items-center gap-2 group-hover:text-amber-400">
                 <Star className="w-5 h-5" /> NMC
               </span>
@@ -321,6 +321,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
