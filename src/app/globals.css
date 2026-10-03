@@ -116,7 +116,8 @@ button { font: inherit; }
 .secure-mark { color: var(--muted); font-size: 12px; }
 .voice-control-stack { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 26px 0 12px; }
 .voice-orb { width: 220px; height: 220px; border-radius: 50%; position: relative; display: grid; place-items: center; margin: 8px 0 18px; }
-.orb-core { width: 104px; height: 104px; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #a9ffe1, #3ccca1 58%, #1a7760); color: #06271d; font-size: 36px; box-shadow: 0 0 56px rgba(60, 204, 161, .28); position: relative; z-index: 2; }
+.orb-core { width: 120px; height: 120px; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #a9ffe1, #3ccca1 58%, #1a7760); color: #06271d; font-size: 36px; box-shadow: 0 0 80px rgba(60, 204, 161, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.8), inset 0 -20px 40px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.6); position: relative; z-index: 2; transition: all 0.5s ease; }
+.voice-orb.active .orb-core { transform: scale(1.1); box-shadow: 0 0 120px rgba(60, 204, 161, 0.9), inset 0 0 40px rgba(255, 255, 255, 0.9), inset 0 -20px 40px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255,255,255,0.9); }
 .orb-ring { position: absolute; inset: 22px; border: 1px solid rgba(126, 240, 197, .15); border-radius: 50%; }
 .ring-b { inset: 42px; }
 .ring-c { inset: 4px; }
@@ -189,3 +190,4 @@ button { font: inherit; }
   .voice-orb { width: 190px; height: 190px; }
 }
 .error-banner { margin: 20px auto 0; padding: 14px 16px; border: 1px solid rgba(255,116,116,.22); background: rgba(255,116,116,.06); color: #ffc0c0; border-radius: 14px; line-height: 1.5; }
+
