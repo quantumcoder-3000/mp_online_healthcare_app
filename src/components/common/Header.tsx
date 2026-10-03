@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Bell, User, Menu, X, Activity, Smartphone, Play } from "lucide-react";
+import {
+  Moon,
+  Bell,
+  User,
+  Menu,
+  X,
+  Activity,
+  Smartphone,
+  Play,
+} from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
@@ -12,24 +21,27 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/#sarthiai", label: "SarthiAi" },{ href: "/prescription", label: "Prescription AI" },
+    { href: "/#sarthiai", label: "SarthiAi" },
+    { href: "/prescription", label: "Prescription AI" },
     { href: "/discovery", label: "Doctors" },
     { href: "/hospital", label: "Hospitals" },
     { href: "/emergency", label: "Ambulance" },
+    { href: "/guidelines", label: "Trust & Safety" },
   ];
 
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-[#0B0C10]/90 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          
           {/* Logo (Left) */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors">
               <Activity className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
-              <h1 className="text-white font-bold text-xl tracking-tight leading-none">ArogyaGrid</h1>
+              <h1 className="text-white font-bold text-xl tracking-tight leading-none">
+                ArogyaGrid
+              </h1>
               <span className="text-xs text-slate-400">powered by AI</span>
             </div>
           </Link>
@@ -54,7 +66,7 @@ export function Header() {
               );
             })}
             {/* App Link */}
-            <button 
+            <button
               onClick={() => setShowQR(true)}
               className="text-sm font-medium text-slate-400 hover:text-white transition-colors py-2 flex items-center gap-1"
             >
@@ -65,7 +77,7 @@ export function Header() {
           {/* Icons & Actions (Right) */}
           <div className="hidden lg:flex items-center gap-5 text-slate-400">
             {/* Demo Button */}
-            <Link 
+            <Link
               href="/emergency"
               className="px-4 py-1.5 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
             >
@@ -87,11 +99,15 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="lg:hidden text-slate-400 hover:text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
@@ -110,8 +126,11 @@ export function Header() {
                 {label}
               </Link>
             ))}
-            <button 
-              onClick={() => { setShowQR(true); setMobileMenuOpen(false); }}
+            <button
+              onClick={() => {
+                setShowQR(true);
+                setMobileMenuOpen(false);
+              }}
               className="text-base font-medium py-2 text-slate-400 text-left flex items-center gap-2"
             >
               <Smartphone className="w-5 h-5" /> Download App
@@ -129,9 +148,12 @@ export function Header() {
       {/* QR Code Modal for App */}
       {showQR && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setShowQR(false)}></div>
+          <div
+            className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+            onClick={() => setShowQR(false)}
+          ></div>
           <div className="relative bg-[#11131A] border border-white/10 rounded-3xl shadow-2xl p-8 max-w-sm w-full text-center">
-            <button 
+            <button
               onClick={() => setShowQR(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 p-1.5 rounded-full transition-colors"
             >
@@ -140,19 +162,23 @@ export function Header() {
             <div className="w-16 h-16 bg-gradient-to-tr from-cyan-500 to-indigo-500 rounded-2xl mx-auto flex items-center justify-center mb-6 shadow-lg">
               <Smartphone className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Get ArogyaGrid</h3>
-            <p className="text-slate-400 text-sm mb-6">Scan with your phone to install the Android app.</p>
-            
+            <h3 className="text-2xl font-bold text-white mb-2">
+              Get ArogyaGrid
+            </h3>
+            <p className="text-slate-400 text-sm mb-6">
+              Scan with your phone to install the Android app.
+            </p>
+
             <div className="bg-white p-4 rounded-xl inline-block mx-auto mb-6 shadow-inner">
-              <img 
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://mp-online-healthcare-app.vercel.app/ArogyaGrid.apk`} 
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://mp-online-healthcare-app.vercel.app/ArogyaGrid.apk`}
                 alt="Download APK"
                 className="w-48 h-48"
               />
             </div>
-            
-            <a 
-              href="/ArogyaGrid.apk" 
+
+            <a
+              href="/ArogyaGrid.apk"
               download
               className="block w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(34,211,238,0.3)]"
             >
