@@ -16,7 +16,7 @@ export default function Home() {
         <div className="flex-1 space-y-8 z-10 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm font-medium text-slate-300 mx-auto lg:mx-0">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            India's #1 Clinical AI Platform
+            India&apos;s #1 Clinical AI Platform
           </div>
           
           <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
@@ -324,4 +324,5 @@ export default function Home() {
     </div>
   );
 }
+
 
