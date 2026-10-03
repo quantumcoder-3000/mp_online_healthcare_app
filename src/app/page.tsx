@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Star, FileText, Search, Activity, PhoneCall, Building2, Mic, Bot } from "lucide-react";
-import VoiceIntake from "@/components/intake/VoiceIntake";
+import VoiceIntake from "@/components/voice/VoiceIntake";
 
 export default function Home() {
   return (
