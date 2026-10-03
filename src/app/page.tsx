@@ -103,7 +103,7 @@ export default function Home() {
 
       {/* Full Width SarthiAi Section */}
       <section id="sarthiai" className="pb-24 px-6 max-w-5xl mx-auto">
-        <div className="bg-[#11131A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl relative transition-transform duration-500 hover:scale-[1.01] hover:border-cyan-500/30 group">
+        <div className="bg-gradient-to-b from-cyan-950/20 to-[#11131A] border border-cyan-500/10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(34,211,238,0.05)] relative transition-all duration-500 hover:scale-[1.01] hover:border-cyan-500/40 hover:shadow-[0_0_80px_rgba(34,211,238,0.15)] group">
           {/* Subtle background glow for the container */}
           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent group-hover:via-cyan-400 transition-all duration-500"></div>
           
@@ -138,7 +138,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           
           {/* Card 1 */}
-          <Link href="/prescription" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-cyan-500/30 transition-all cursor-pointer h-[240px]">
+          <Link href="/prescription" className="group flex flex-col justify-between bg-gradient-to-br from-cyan-950/40 to-[#11131A] border border-cyan-500/10 p-6 rounded-3xl shadow-[0_0_30px_rgba(34,211,238,0.05)] hover:border-cyan-500/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all cursor-pointer h-[240px]">
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -159,7 +159,7 @@ export default function Home() {
           </Link>
 
           {/* Card 2 */}
-          <Link href="/discovery" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-indigo-500/30 transition-all cursor-pointer h-[240px]">
+          <Link href="/discovery" className="group flex flex-col justify-between bg-gradient-to-br from-indigo-950/40 to-[#11131A] border border-indigo-500/10 p-6 rounded-3xl shadow-[0_0_30px_rgba(99,102,241,0.05)] hover:border-indigo-500/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.2)] transition-all cursor-pointer h-[240px]">
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -180,7 +180,7 @@ export default function Home() {
           </Link>
 
           {/* Card 3 */}
-          <Link href="/emergency" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-rose-500/30 transition-all cursor-pointer h-[240px]">
+          <Link href="/emergency" className="group flex flex-col justify-between bg-gradient-to-br from-rose-950/40 to-[#11131A] border border-rose-500/10 p-6 rounded-3xl shadow-[0_0_30px_rgba(244,63,94,0.05)] hover:border-rose-500/40 hover:shadow-[0_0_40px_rgba(244,63,94,0.2)] transition-all cursor-pointer h-[240px]">
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -201,7 +201,7 @@ export default function Home() {
           </Link>
 
           {/* Card 4 */}
-          <Link href="/command-center" className="group flex flex-col justify-between bg-[#11131A] border border-white/5 p-6 rounded-3xl hover:border-emerald-500/30 transition-all cursor-pointer h-[240px]">
+          <Link href="/command-center" className="group flex flex-col justify-between bg-gradient-to-br from-emerald-950/40 to-[#11131A] border border-emerald-500/10 p-6 rounded-3xl shadow-[0_0_30px_rgba(16,185,129,0.05)] hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.2)] transition-all cursor-pointer h-[240px]">
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -231,21 +231,21 @@ export default function Home() {
           <p className="text-slate-400">ArogyaGrid is built on a foundation of clinical safety and data privacy.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-cyan-500/30 transition-all cursor-pointer shadow-lg hover:shadow-cyan-500/10 hover:scale-[1.02]">
+          <Link href="/guidelines" className="group bg-gradient-to-br from-cyan-950/30 to-[#11131A] border border-cyan-500/10 p-8 rounded-3xl hover:border-cyan-500/40 transition-all cursor-pointer shadow-lg hover:shadow-cyan-500/10 hover:scale-[1.02]">
             <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6">
               <Shield className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Safety Protocols</h3>
             <p className="text-sm text-slate-400">View our emergency routing safety logic and clinical red-flag protocols.</p>
           </Link>
-          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-indigo-500/30 transition-all cursor-pointer shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.02]">
+          <Link href="/guidelines" className="group bg-gradient-to-br from-indigo-950/30 to-[#11131A] border border-indigo-500/10 p-8 rounded-3xl hover:border-indigo-500/40 transition-all cursor-pointer shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.02]">
             <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6">
               <FileText className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Clinical Guidelines</h3>
             <p className="text-sm text-slate-400">Understand the triage algorithms and how SarthiAi makes routing decisions.</p>
           </Link>
-          <Link href="/guidelines" className="group bg-[#11131A] border border-white/5 p-8 rounded-3xl hover:border-emerald-500/30 transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.02]">
+          <Link href="/guidelines" className="group bg-gradient-to-br from-emerald-950/30 to-[#11131A] border border-emerald-500/10 p-8 rounded-3xl hover:border-emerald-500/40 transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.02]">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6">
               <Lock className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
             </div>
@@ -321,6 +321,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
