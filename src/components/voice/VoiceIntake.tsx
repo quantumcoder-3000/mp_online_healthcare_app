@@ -264,7 +264,7 @@ export function VoiceIntake() {
     <div className="voice-page-embedded w-full max-w-6xl mx-auto">
       <div className="flex flex-col items-center py-8">
         <div className="text-center mb-8">
-          <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">VOICE INTAKE</p>
+          <p className="text-cyan-400 font-bold tracking-widest text-xs mb-2">SARTHIAI</p>
           <h2 className="text-3xl font-bold text-white mb-3">Speak naturally.</h2>
           <p className="text-slate-400 text-sm max-w-lg mx-auto">
             AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic, with escalation to emergency services when high-risk features are detected or when uncertainty exists. The system does not diagnose or replace a medical professional.
