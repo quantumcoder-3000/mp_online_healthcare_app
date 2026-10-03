@@ -99,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Full Width Voice Intake Section */}
+      {/* Full Width SarthiAi Section */}
       <section className="pb-24 px-6 max-w-5xl mx-auto">
         <div className="bg-[#11131A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl relative">
           {/* Subtle background glow for the container */}
@@ -109,7 +109,7 @@ export default function Home() {
             <div className="text-center mb-10">
               <h2 className="text-2xl font-bold text-white mb-3">Speak naturally.</h2>
               <p className="text-slate-400 max-w-2xl mx-auto text-sm">
-                AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic. ArogyaGrid automatically transcribes and routes your request.
+                AI-assisted emergency risk screening based on predefined clinical red flags and safety-oriented triage logic. SarthiAi automatically transcribes and routes your request.
               </p>
             </div>
             
@@ -224,3 +224,4 @@ export default function Home() {
     </div>
   );
 }
+
