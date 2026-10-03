@@ -637,99 +637,33 @@ export const DoctorDiscovery = () => {
         </div>
       )}
 
-      {/* MP Map & Govt Links Section (eSanjeevani Inspiration) */}
-      <div className="mt-16 pt-8 border-t border-slate-800/50 text-center">
-        <h3 className="text-xl font-bold text-slate-200 mb-8">
-          Integrated with National & State Registries
-        </h3>
-
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-12">
-          <div className="w-64 h-64 opacity-80 filter brightness-110 saturate-150">
-            {/* SVG approximation of MP Map layout - styled similarly to the requested image */}
-            <svg
-              viewBox="0 0 200 200"
-              className="w-full h-full drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]"
-            >
-              <path
-                d="M90 20 L130 30 L150 70 L170 80 L180 120 L150 160 L100 180 L60 160 L30 130 L40 80 Z"
-                fill="rgba(15,23,42,0.8)"
-                stroke="#06b6d4"
-                strokeWidth="2"
-              />
-              {/* Hotspots */}
-              <circle
-                cx="100"
-                cy="100"
-                r="15"
-                fill="none"
-                stroke="#f59e0b"
-                strokeWidth="2"
-                className="animate-pulse"
-              />
-              <circle cx="100" cy="100" r="4" fill="#f59e0b" />
-              <circle
-                cx="140"
-                cy="70"
-                r="8"
-                fill="none"
-                stroke="#06b6d4"
-                strokeWidth="1"
-              />
-              <circle cx="140" cy="70" r="2" fill="#06b6d4" />
-              <circle
-                cx="60"
-                cy="120"
-                r="10"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="1.5"
-              />
-              <circle cx="60" cy="120" r="3" fill="#10b981" />
-              <circle
-                cx="120"
-                cy="140"
-                r="6"
-                fill="none"
-                stroke="#06b6d4"
-                strokeWidth="1"
-              />
-              <circle cx="120" cy="140" r="2" fill="#06b6d4" />
-            </svg>
-          </div>
-          <div className="space-y-4 text-left">
-            <div className="bg-emerald-900/40 border border-emerald-500/30 px-6 py-4 rounded-xl flex items-center gap-6">
+      {/* eSanjeevani Direct Link Section */}
+      <div className="mt-16 max-w-2xl mx-auto">
+        <a
+          href="https://esanjeevani.mohfw.gov.in"
+          target="_blank"
+          rel="noreferrer"
+          className="group block bg-[#11131A] border border-emerald-500/20 p-6 rounded-3xl hover:border-emerald-500/50 transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.02]"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Activity className="w-7 h-7 text-emerald-400" />
+              </div>
               <div>
-                <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">
-                  Total Patients Served
+                <h3 className="text-xl font-bold text-white mb-1">
+                  eSanjeevani Telemedicine
+                </h3>
+                <p className="text-sm text-slate-400">
+                  Access the National Teleconsultation Service (Reference)
                 </p>
-                <p className="text-3xl font-black text-white">502,911,634</p>
               </div>
             </div>
-            <div className="bg-cyan-900/40 border border-cyan-500/30 px-6 py-4 rounded-xl flex items-center gap-6">
-              <div>
-                <p className="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">
-                  Patients Served Today
-                </p>
-                <p className="text-3xl font-black text-white">196,416</p>
-              </div>
+            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+              <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-emerald-400" />
             </div>
           </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto opacity-70">
-          <div className="bg-slate-900 border border-slate-800 p-4 rounded-lg flex items-center justify-center font-bold text-slate-400">
-            ABDM
-          </div>
-          <div className="bg-slate-900 border border-slate-800 p-4 rounded-lg flex items-center justify-center font-bold text-slate-400">
-            eSanjeevani
-          </div>
-          <div className="bg-slate-900 border border-slate-800 p-4 rounded-lg flex items-center justify-center font-bold text-slate-400">
-            HFR Registry
-          </div>
-          <div className="bg-slate-900 border border-slate-800 p-4 rounded-lg flex items-center justify-center font-bold text-slate-400">
-            NMC
-          </div>
-        </div>
+        </a>
       </div>
     </div>
   );
