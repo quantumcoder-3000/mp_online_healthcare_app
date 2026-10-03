@@ -77,23 +77,28 @@ export default function Home() {
           </div>
 
           {/* Glowing Sphere */}
-          <div className="relative w-72 h-72 flex items-center justify-center">
-            {/* Outer Glows */}
-            <div className="absolute inset-0 rounded-full bg-cyan-500/10 blur-[80px] animate-pulse"></div>
-            <div className="absolute inset-4 rounded-full bg-indigo-500/20 blur-[60px] animate-pulse" style={{ animationDelay: "1s" }}></div>
-            <div className="absolute inset-8 rounded-full bg-purple-500/20 blur-[40px] animate-pulse" style={{ animationDelay: "2s" }}></div>
+          <div className="relative w-80 h-80 flex items-center justify-center">
+            {/* Massive Ambient Glows */}
+            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-[100px] animate-[pulse_4s_ease-in-out_infinite]"></div>
+            <div className="absolute inset-4 rounded-full bg-indigo-500/20 blur-[80px] animate-[pulse_5s_ease-in-out_infinite]" style={{ animationDelay: "1s" }}></div>
+            <div className="absolute inset-10 rounded-full bg-purple-500/30 blur-[60px] animate-[pulse_6s_ease-in-out_infinite]" style={{ animationDelay: "2s" }}></div>
             
-            {/* Core Sphere */}
-            <div className="relative w-40 h-40 rounded-full bg-gradient-to-br from-cyan-400 via-indigo-500 to-purple-600 shadow-[0_0_60px_rgba(99,102,241,0.4)] flex items-center justify-center overflow-hidden z-10 group">
-              {/* Inner Core Animation */}
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent group-hover:rotate-180 transition-transform duration-1000 ease-in-out"></div>
+            {/* Core 3D Luminescent Sphere */}
+            <div className="relative w-48 h-48 rounded-full bg-gradient-to-br from-cyan-300 via-indigo-500 to-purple-800 shadow-[0_0_80px_rgba(99,102,241,0.6),inset_0_0_50px_rgba(255,255,255,0.6),inset_0_-20px_40px_rgba(0,0,0,0.6)] flex items-center justify-center overflow-hidden z-10 border border-white/40 animate-[pulse_4s_ease-in-out_infinite] group hover:scale-105 transition-transform duration-500">
               
-              <Mic className="w-16 h-16 text-white drop-shadow-2xl z-20" />
+              {/* Glass Specular Highlight (Rim Light) */}
+              <div className="absolute top-3 left-6 w-24 h-12 bg-white/50 blur-[12px] rounded-[100%] rotate-[-25deg] group-hover:bg-white/70 transition-colors"></div>
               
-              {/* Ripple Rings */}
-              <div className="absolute inset-0 rounded-full border border-white/20 scale-[1.2] animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
-              <div className="absolute inset-0 rounded-full border border-white/10 scale-[1.5] animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" style={{ animationDelay: "0.5s" }}></div>
+              {/* Inner Core Texture */}
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent group-hover:rotate-180 transition-transform duration-1000 ease-in-out"></div>
+              
+              {/* Floating Glowing Icon */}
+              <Mic className="w-16 h-16 text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.9)] z-20 group-hover:scale-110 transition-transform duration-500" />
+              
+              {/* Subtle Pulsing Rings inside */}
+              <div className="absolute inset-0 rounded-full border border-white/30 scale-[1.05] animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+              <div className="absolute inset-0 rounded-full border border-white/10 scale-[1.15] animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]" style={{ animationDelay: "1s" }}></div>
             </div>
           </div>
         </div>
