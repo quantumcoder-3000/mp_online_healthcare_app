@@ -570,7 +570,7 @@ export const DoctorDiscovery = () => {
                     <div className="flex flex-wrap gap-2">
                       <button
                         onClick={(e) => {
-                          e.currentTarget.innerText = "Ã¢Å“â€œ Added";
+                          e.currentTarget.innerText = "? Added";
                           e.currentTarget.className =
                             "px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors";
                         }}
@@ -580,7 +580,7 @@ export const DoctorDiscovery = () => {
                       </button>
                       <button
                         onClick={(e) => {
-                          e.currentTarget.innerText = "Ã¢Å“â€œ Added";
+                          e.currentTarget.innerText = "? Added";
                           e.currentTarget.className =
                             "px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors";
                         }}
@@ -590,7 +590,7 @@ export const DoctorDiscovery = () => {
                       </button>
                       <button
                         onClick={(e) => {
-                          e.currentTarget.innerText = "Ã¢Å“â€œ Added";
+                          e.currentTarget.innerText = "? Added";
                           e.currentTarget.className =
                             "px-3 py-1.5 text-xs rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 transition-colors";
                         }}
@@ -672,3 +672,4 @@ export const DoctorDiscovery = () => {
     </div>
   );
 };
+
