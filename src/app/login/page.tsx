@@ -137,13 +137,20 @@ export default function LoginPage() {
       {/* RIGHT PANEL - VISUAL / MASCOT */}
       <div className="hidden lg:flex w-7/12 relative bg-[#0a192f] items-center justify-center overflow-hidden">
         
-        {/* Animated Gradient Background matching the template vibe */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f] via-[#0d2a45] to-[#043d52]"></div>
-          {/* Glowing Orbs */}
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-500/20 blur-[120px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/10 blur-[150px]"></div>
-          <div className="absolute top-[30%] left-[20%] w-[70%] h-[70%] rounded-full bg-emerald-500/10 blur-[130px] mix-blend-screen"></div>
+        {/* Topographical Fluid Mesh Gradient Background */}
+        <div className="absolute inset-0 z-0 bg-[#0B1E40] overflow-hidden">
+          {/* Base fluid wave layers matching the peach/blue template image */}
+          <div className="absolute top-[-10%] left-[-15%] w-[80%] h-[80%] rounded-[100%] bg-gradient-to-br from-[#ffd5a1] to-[#ffb347] blur-[130px] opacity-[0.9] mix-blend-screen transform rotate-12 scale-y-150 animate-pulse" style={{ animationDuration: "10s" }}></div>
+          
+          <div className="absolute bottom-[-10%] right-[-10%] w-[90%] h-[90%] rounded-full bg-gradient-to-tl from-[#1E3A8A] via-[#22d3ee] to-[#043d52] blur-[140px] opacity-[0.8] transform -rotate-12 scale-x-125"></div>
+          
+          {/* The dark topographical ridge */}
+          <div className="absolute top-[15%] left-[20%] w-[70%] h-[150%] rounded-full bg-[#0a192f] blur-[110px] opacity-[0.95] transform -rotate-45"></div>
+          
+          <div className="absolute top-[40%] right-[5%] w-[45%] h-[60%] rounded-[100%] bg-gradient-to-b from-[#ffd5a1] to-transparent blur-[110px] opacity-[0.45] transform rotate-[35deg]"></div>
+          
+          {/* Topographical Grid Overlay */}
+          <div className="absolute inset-0 z-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         </div>
 
         {/* Mascot & Welcome Text */}
