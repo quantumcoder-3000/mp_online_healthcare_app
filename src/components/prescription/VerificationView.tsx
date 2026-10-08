@@ -79,10 +79,9 @@ export function VerificationView() {
       const instructionsLower_ = med.instructions?.toLowerCase() || "";
       const frequencyLower = med.frequency?.toLowerCase() || "";
       let times = 1;
-
-      if (frequencyLower.includes("twice") || frequencyLower.includes("bd") || frequencyLower.includes("b.i.d")) times = 2;
-      else if (frequencyLower.includes("thrice") || frequencyLower.includes("tds") || frequencyLower.includes("t.i.d")) times = 3;
-      else if (frequencyLower.includes("four times") || frequencyLower.includes("qds")) times = 4;
+        if (frequencyLower.includes("twice") || frequencyLower.includes("bd") || frequencyLower.includes("b.i.d") || frequencyLower.includes("2 times") || frequencyLower.includes("two times") || frequencyLower.includes("twice daily")) times = 2;
+        else if (frequencyLower.includes("thrice") || frequencyLower.includes("tds") || frequencyLower.includes("t.i.d") || frequencyLower.includes("3 times") || frequencyLower.includes("three times")) times = 3;
+        else if (frequencyLower.includes("four times") || frequencyLower.includes("qds") || frequencyLower.includes("4 times")) times = 4;
 
       const baseTimes = times === 1 ? ["09:00"] : times === 2 ? ["09:00", "21:00"] : times === 3 ? ["09:00", "14:00", "21:00"] : ["09:00", "13:00", "17:00", "21:00"];
 
@@ -276,3 +275,4 @@ export function VerificationView() {
     </div>
   );
 }
+
