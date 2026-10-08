@@ -95,17 +95,17 @@ ${transcript.slice(0, 30000)}
 ---
 `;
 
-  const interaction = await ai.interactions.create({
+  const response = await ai.models.generateContent({
     model,
-    input: prompt,
-    response_format: {
-      type: "text",
-      mime_type: "application/json",
-      schema: patientIntakeSchema,
-    },
+    contents: [{ role: "user", parts: [{ text: prompt }] }],
+    config: {
+      responseMimeType: "application/json",
+      responseSchema: patientIntakeSchema as any,
+      temperature: 0.1,
+    }
   });
 
-  const outputText = interaction.output_text;
+  const outputText = response.text;
   if (!outputText) {
     throw new Error("Gemini returned no structured output.");
   }
@@ -119,3 +119,4 @@ ${transcript.slice(0, 30000)}
 
   return validatePatientIntake(parsed);
 }
+
