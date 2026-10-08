@@ -166,7 +166,7 @@ export default function LoginPage() {
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-12">
             
             {/* Mascot Container */}
-            <div className="relative w-64 h-56 transform hover:scale-105 transition-transform duration-500 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+            <div className="relative w-64 h-[210px] mb-8 transform hover:scale-105 transition-transform duration-500 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
               <Image 
                 src="/mascot2.png" 
                 alt="ArogyaGrid Doctor Mascot" 
@@ -175,11 +175,6 @@ export default function LoginPage() {
                 priority
               />
             </div>
-            
-            {/* New HTML text replacing the baked-in image text */}
-            <h2 className="text-3xl font-black tracking-widest text-cyan-400 mb-6 z-20" style={{ WebkitTextStroke: "1px white", textShadow: "0px 4px 15px rgba(34,211,238,0.6), 0px 3px 0px #0891b2" }}>
-              SARTHI AI
-            </h2>
             
             <h1 className="text-5xl font-extrabold text-white tracking-tight mb-3 drop-shadow-lg text-center">
               Welcome.
@@ -193,6 +188,7 @@ export default function LoginPage() {
     </div>
   );
 }
+
 
 
 
