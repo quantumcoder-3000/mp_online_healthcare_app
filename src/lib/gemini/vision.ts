@@ -55,6 +55,7 @@ export async function analyzePrescription(
 ): Promise<ExtractedPrescription> {
   const model = process.env.GEMINI_VISION_MODEL || "gemini-2.5-pro";
 
+  console.log("VISION API KEY Check: ", process.env.GEMINI_API_KEY ? "EXISTS" : "UNDEFINED");
   const prompt = `
 You are CareFlow's clinical document reading assistant.
 Extract the prescription details from this image/PDF exactly as written.
@@ -136,3 +137,4 @@ CRITICAL RULES:
     throw error;
   }
 }
+
