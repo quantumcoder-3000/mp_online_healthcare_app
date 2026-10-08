@@ -18,7 +18,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 sm:p-8 bg-[#0a192f] selection:bg-cyan-500/30">
+    <div className="w-full flex items-center justify-center py-6 selection:bg-cyan-500/30">
       
       {/* FLOATING SPLIT-SCREEN CARD */}
       <div className="w-full max-w-5xl bg-[#050B14] rounded-[2rem] shadow-2xl flex flex-col lg:flex-row overflow-hidden relative z-10" style={{ minHeight: '650px', maxHeight: '90vh' }}>
@@ -166,12 +166,12 @@ export default function LoginPage() {
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-12">
             
             {/* Mascot Container */}
-            <div className="relative w-72 h-72 mb-8 transform hover:scale-105 transition-transform duration-500 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-2 border-white/10">
+            <div className="relative w-48 h-48 mb-8 transform hover:scale-105 transition-transform duration-500 rounded-full bg-white overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.2)] border-4 border-slate-100 flex items-center justify-center">
               <Image 
                 src="/mascot.png" 
                 alt="ArogyaGrid Doctor Mascot" 
                 fill 
-                className="object-cover"
+                className="object-cover scale-[1.15]"
                 priority
               />
             </div>
@@ -188,4 +188,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
 
