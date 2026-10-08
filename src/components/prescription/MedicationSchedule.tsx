@@ -28,6 +28,15 @@ function TimeEditor({ doseId, initialTime, onSave }: { doseId: string, initialTi
         type="time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
+        onClick={(e) => {
+          try {
+            if ("showPicker" in HTMLInputElement.prototype) {
+              e.currentTarget.showPicker();
+            }
+          } catch (err) {
+            // fallback for older browsers
+          }
+        }}
         onBlur={handleBlur}
         className="bg-slate-900/80 border border-slate-700 text-slate-200 rounded-md pl-8 pr-2 py-1.5 text-xs font-medium outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all cursor-pointer w-[105px] hover:border-slate-500 shadow-inner"
         style={{ colorScheme: "dark" }}
@@ -151,4 +160,5 @@ export function MedicationSchedule() {
     </div>
   );
 }
+
 
