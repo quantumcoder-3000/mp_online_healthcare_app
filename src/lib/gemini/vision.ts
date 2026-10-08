@@ -26,25 +26,13 @@ const prescriptionSchema: Schema = {
           route: { type: Type.STRING, nullable: true },
           instructions: { type: Type.STRING, nullable: true },
           confidence: { type: Type.NUMBER },
-              tests: {
-      type: Type.ARRAY,
-      items: {
-        type: Type.OBJECT,
-        properties: {
-          name: { type: Type.STRING },
-          reason: { type: Type.STRING, nullable: true },
           needsVerification: { type: Type.BOOLEAN },
-        },
-        required: ["name", "needsVerification"],
-      },
-    },
-    needsVerification: { type: Type.BOOLEAN },
           sourceText: { type: Type.STRING },
         },
         required: ["confidence", "needsVerification", "sourceText"],
       },
     },
-        tests: {
+    tests: {
       type: Type.ARRAY,
       items: {
         type: Type.OBJECT,
@@ -65,7 +53,7 @@ export async function analyzePrescription(
   mimeType: string,
   base64Data: string
 ): Promise<ExtractedPrescription> {
-  const model = process.env.GEMINI_VISION_MODEL || "gemini-2.5-pro"; // Multimodal extraction
+  const model = process.env.GEMINI_VISION_MODEL || "gemini-2.5-pro";
 
   const prompt = `
 You are CareFlow's clinical document reading assistant.
@@ -102,7 +90,7 @@ CRITICAL RULES:
       config: {
         responseMimeType: "application/json",
         responseSchema: prescriptionSchema,
-        temperature: 0.1, // Low temperature for factual extraction
+        temperature: 0.1,
       },
     });
 
@@ -113,7 +101,6 @@ CRITICAL RULES:
 
     const parsed = JSON.parse(outputText);
     
-    // Add stable IDs and timestamps
     const result: ExtractedPrescription = {
       prescriptionId: `RX-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
       analyzedAt: new Date().toISOString(),
@@ -122,7 +109,13 @@ CRITICAL RULES:
       prescriptionDate: parsed.prescriptionDate || null,
       notes: parsed.notes || null,
       needsVerification: parsed.needsVerification ?? true,
-      medications: (parsed.medications || []).map((m: Record<string, unknown>) => ({
+      tests: (parsed.tests || []).map((t: any) => ({
+        id: `TEST-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
+        name: typeof t.name === 'string' ? t.name : "Unknown Test",
+        reason: typeof t.reason === 'string' ? t.reason : null,
+        needsVerification: typeof t.needsVerification === 'boolean' ? t.needsVerification : true
+      })),
+      medications: (parsed.medications || []).map((m: any) => ({
         id: `MED-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
         name: typeof m.name === 'string' ? m.name : null,
         strength: typeof m.strength === 'string' ? m.strength : null,
