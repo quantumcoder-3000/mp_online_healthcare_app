@@ -210,8 +210,9 @@ export const HospitalStatusCard: React.FC<Props> = ({ hospital, isRecommended })
       {/* Footer Metadata */}
       <div className="mt-4 pt-2 border-t border-slate-800/70 flex items-center justify-between text-[10px] text-slate-500 font-mono">
         <span>Source: {status.data_source}</span>
-        <span>Updated: {new Date(status.updated_at).toLocaleTimeString()}</span>
+        <span suppressHydrationWarning>Updated: {new Date(status.updated_at).toLocaleTimeString()}</span>
       </div>
     </div>
   );
 };
+
