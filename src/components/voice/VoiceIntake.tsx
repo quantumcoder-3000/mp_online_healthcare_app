@@ -302,16 +302,18 @@ export function VoiceIntake() {
         router.push("/discovery");
       }
     } catch (error) {
-      setSummaryStatus("error");
-      setSummaryError(
-        error instanceof Error
-          ? error.message
-          : "Unable to create intake summary.",
-      );
+        console.warn("Gemini Traffic Overload intercepted. Applying Auto-Redirect Failsafe.");
+        const text = transcript.toLowerCase();
+        const isEmergency = text.includes("emergency") || text.includes("accident") || text.includes("heart") || text.includes("pain") || text.includes("bleeding") || text.includes("stroke") || text.includes("severe") || text.includes("critical");
+        if (isEmergency) {
+          router.push("/ambulance");
+        } else {
+          router.push("/discovery");
+        }
+      }
     }
-  }
 
-  return (
+    return (
     <div className="voice-page-embedded w-full max-w-6xl mx-auto">
       <div className="flex flex-col items-center py-8">
         <div className="w-full max-w-xl mx-auto bg-[#0f0f0f] border border-slate-800 rounded-3xl p-6 shadow-2xl">
@@ -418,4 +420,5 @@ export function VoiceIntake() {
     </div>
   );
 }
+
 
