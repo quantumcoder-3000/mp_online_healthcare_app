@@ -304,7 +304,7 @@ export function VoiceIntake() {
     } catch (error) {
         console.warn("Gemini Traffic Overload intercepted. Applying Auto-Redirect Failsafe.");
         const text = transcript.toLowerCase();
-        const isEmergency = text.includes("emergency") || text.includes("accident") || text.includes("heart") || text.includes("pain") || text.includes("bleeding") || text.includes("stroke") || text.includes("severe") || text.includes("critical");
+        const isEmergency = text.includes("heart attack") || text.includes("stroke") || text.includes("car accident") || text.includes("unconscious") || text.includes("cannot breathe") || text.includes("bleeding out") || text.includes("suicide") || text.includes("critical emergency");
         if (isEmergency) {
           router.push("/ambulance");
         } else {
@@ -420,5 +420,6 @@ export function VoiceIntake() {
     </div>
   );
 }
+
 
 
