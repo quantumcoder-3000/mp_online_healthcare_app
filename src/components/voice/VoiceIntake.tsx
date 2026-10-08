@@ -297,7 +297,7 @@ export function VoiceIntake() {
       payload.data.triageCategory = triageCategory;
       if (triageCategory === "RED") {
         processEmergency(payload.data);
-        router.push("/emergency");
+        router.push("/ambulance");
       } else {
         router.push("/discovery");
       }
@@ -418,3 +418,4 @@ export function VoiceIntake() {
     </div>
   );
 }
+
