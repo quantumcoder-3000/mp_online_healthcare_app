@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Moon,
@@ -35,8 +36,8 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo (Left) */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors">
-              <Activity className="w-5 h-5 text-cyan-400" />
+            <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+              <Image src="/logo.jpg" alt="ArogyaGrid Logo" fill className="object-cover scale-[1.15]" priority />
             </div>
             <div>
               <h1 className="text-white font-bold text-xl tracking-tight leading-none">
@@ -190,4 +191,5 @@ export function Header() {
     </>
   );
 }
+
 
