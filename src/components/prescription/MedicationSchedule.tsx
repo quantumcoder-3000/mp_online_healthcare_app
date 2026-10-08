@@ -22,14 +22,18 @@ function TimeEditor({ doseId, initialTime, onSave }: { doseId: string, initialTi
   };
 
   return (
-    <input 
-      type="time"
-      value={time}
-      onChange={(e) => setTime(e.target.value)}
-      onBlur={handleBlur}
-      className="bg-slate-900 border border-slate-700 text-slate-300 rounded px-2 py-1 text-xs outline-none focus:border-cyan-500 transition-colors"
-      title="Edit reminder time"
-    />
+    <div className="relative inline-flex items-center group">
+      <Clock className="absolute left-2.5 w-3.5 h-3.5 text-cyan-500 pointer-events-none group-hover:text-cyan-400 transition-colors" />
+      <input 
+        type="time"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+        onBlur={handleBlur}
+        className="bg-slate-900/80 border border-slate-700 text-slate-200 rounded-md pl-8 pr-2 py-1.5 text-xs font-medium outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all cursor-pointer w-[105px] hover:border-slate-500 shadow-inner"
+        style={{ colorScheme: "dark" }}
+        title="Click the clock icon to set reminder time"
+      />
+    </div>
   );
 }
 
@@ -147,3 +151,4 @@ export function MedicationSchedule() {
     </div>
   );
 }
+
