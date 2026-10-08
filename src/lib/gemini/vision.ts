@@ -51,7 +51,7 @@ export async function analyzePrescription(
   base64Data: string
 ): Promise<ExtractedPrescription> {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "dummy" });
-  const model = process.env.GEMINI_VISION_MODEL || "gemini-2.5-pro";
+  const model = process.env.GEMINI_VISION_MODEL || "gemini-3.1-pro-preview";
 
   console.log("VISION API KEY Check: ", process.env.GEMINI_API_KEY ? "EXISTS" : "UNDEFINED");
   const prompt = `
@@ -135,5 +135,6 @@ CRITICAL RULES:
     throw error;
   }
 }
+
 
 
