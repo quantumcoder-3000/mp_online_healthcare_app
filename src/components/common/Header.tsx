@@ -93,9 +93,9 @@ export function Header() {
               <Bell className="w-5 h-5" />
               <span className="absolute 0 right-0 w-2 h-2 bg-rose-500 rounded-full"></span>
             </button>
-            <button className="w-8 h-8 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center hover:border-cyan-400/50 transition-colors">
+            <Link href="/login" className="w-8 h-8 rounded-full bg-[#1F2833] border border-white/10 flex items-center justify-center hover:border-cyan-400/50 hover:bg-[#2A3645] transition-colors" title="Login / Sign up">
               <User className="w-4 h-4 text-white" />
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -139,7 +139,7 @@ export function Header() {
             <div className="flex gap-6 text-slate-400 pb-2">
               <Moon className="w-5 h-5" />
               <Bell className="w-5 h-5" />
-              <User className="w-5 h-5" />
+              <Link href="/login" className="hover:text-white transition-colors" title="Login / Sign up"><User className="w-5 h-5" /></Link>
             </div>
           </div>
         )}
@@ -190,3 +190,4 @@ export function Header() {
     </>
   );
 }
+
