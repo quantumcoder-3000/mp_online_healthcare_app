@@ -166,12 +166,12 @@ export default function LoginPage() {
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-12">
             
             {/* Mascot Container */}
-            <div className="relative w-64 h-64 mb-8 transform hover:scale-105 transition-transform duration-500 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+            <div className="relative w-72 h-72 mb-8 transform hover:scale-105 transition-transform duration-500 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-2 border-white/10">
               <Image 
                 src="/mascot.png" 
                 alt="ArogyaGrid Doctor Mascot" 
                 fill 
-                className="object-contain"
+                className="object-cover"
                 priority
               />
             </div>
@@ -188,3 +188,4 @@ export default function LoginPage() {
     </div>
   );
 }
+
