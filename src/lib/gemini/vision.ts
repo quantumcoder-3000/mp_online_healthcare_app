@@ -1,10 +1,7 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { ExtractedPrescription, RawMedication } from "../../types/prescription";
 
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) { console.warn("GEMINI_API_KEY is not configured on the server. AI features may fail."); }
 
-const ai = new GoogleGenAI({ apiKey: apiKey || "dummy" });
 
 const prescriptionSchema: Schema = {
   type: Type.OBJECT,
@@ -53,6 +50,7 @@ export async function analyzePrescription(
   mimeType: string,
   base64Data: string
 ): Promise<ExtractedPrescription> {
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "dummy" });
   const model = process.env.GEMINI_VISION_MODEL || "gemini-2.5-pro";
 
   console.log("VISION API KEY Check: ", process.env.GEMINI_API_KEY ? "EXISTS" : "UNDEFINED");
@@ -137,4 +135,5 @@ CRITICAL RULES:
     throw error;
   }
 }
+
 
