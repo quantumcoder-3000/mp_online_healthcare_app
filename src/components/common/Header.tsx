@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useCareFlow } from "@/context/CareFlowContext";
 import {
-  Moon,
+  Globe, ChevronDown,
   Bell,
   User,
   Menu,
@@ -19,6 +20,10 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showQR, setShowQR] = useState(false);
+  const { appLanguage, setAppLanguage } = useCareFlow();
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  
+  const languages = ["English", "Hindi", "Bengali", "Marathi", "Gujarati", "Punjabi", "Odia", "Assamese", "Kashmiri"];
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -87,9 +92,30 @@ export function Header() {
 
             <div className="w-px h-6 bg-white/10 mx-1"></div>
 
-            <button className="hover:text-white transition-colors">
-              <Moon className="w-5 h-5" />
-            </button>
+            <div className="relative">
+                <button 
+                  onClick={() => setShowLangMenu(!showLangMenu)}
+                  className="flex items-center gap-1 hover:text-white transition-colors bg-white/5 px-2 py-1 rounded-md"
+                  title="Translate Page"
+                >
+                  <Globe className="w-5 h-5 text-cyan-400" />
+                  <span className="text-xs font-bold uppercase">{appLanguage.substring(0,3)}</span>
+                  <ChevronDown className="w-3 h-3" />
+                </button>
+                {showLangMenu && (
+                  <div className="absolute top-full mt-2 right-0 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-2 w-32 z-50">
+                    {languages.map(lang => (
+                      <button
+                        key={lang}
+                        onClick={() => { setAppLanguage(lang); setShowLangMenu(false); }}
+                        className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-800 ${appLanguage === lang ? "text-cyan-400 font-bold" : "text-slate-300"}`}
+                      >
+                        {lang}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             <button className="hover:text-white transition-colors relative">
               <Bell className="w-5 h-5" />
               <span className="absolute 0 right-0 w-2 h-2 bg-rose-500 rounded-full"></span>
@@ -138,7 +164,7 @@ export function Header() {
             </button>
             <div className="h-[1px] bg-white/5 my-2"></div>
             <div className="flex gap-6 text-slate-400 pb-2">
-              <Moon className="w-5 h-5" />
+              <Globe className="w-5 h-5 text-cyan-400" />
               <Bell className="w-5 h-5" />
               <Link href="/login" className="hover:text-white transition-colors" title="Login / Sign up"><User className="w-5 h-5" /></Link>
             </div>
@@ -191,5 +217,6 @@ export function Header() {
     </>
   );
 }
+
 
 
