@@ -191,3 +191,9 @@ button { font: inherit; }
 }
 .error-banner { margin: 20px auto 0; padding: 14px 16px; border: 1px solid rgba(255,116,116,.22); background: rgba(255,116,116,.06); color: #ffc0c0; border-radius: 14px; line-height: 1.5; }
 
+
+/* Hide Google Translate Banner and Popup */
+body { top: 0 !important; }
+.skiptranslate, .goog-te-banner-frame { display: none !important; }
+#goog-gt-tt { display: none !important; }
+

@@ -23,7 +23,27 @@ export function Header() {
   const { appLanguage, setAppLanguage } = useCareFlow();
   const [showLangMenu, setShowLangMenu] = useState(false);
   
-  const languages = ["English", "Hindi", "Bengali", "Marathi", "Gujarati", "Punjabi", "Odia", "Assamese", "Kashmiri"];
+  const langMap: Record<string, string> = { "English": "en", "Hindi": "hi", "Bengali": "bn", "Marathi": "mr", "Gujarati": "gu", "Punjabi": "pa", "Odia": "or", "Assamese": "as", "Kashmiri": "ks" };
+  const languages = Object.keys(langMap);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem("careflow_lang");
+    if (saved && langMap[saved]) {
+      setAppLanguage(saved);
+    }
+  }, [setAppLanguage]);
+  
+  const handleTranslate = (lang: string) => {
+    setAppLanguage(lang);
+    localStorage.setItem("careflow_lang", lang);
+    setShowLangMenu(false);
+    
+    // Google Translate Cookie Hack
+    const code = langMap[lang];
+    document.cookie = `googtrans=/en/${code}; path=/`;
+    document.cookie = `googtrans=/en/${code}; path=/; domain=${window.location.hostname}`;
+    window.location.reload();
+  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -107,7 +127,7 @@ export function Header() {
                     {languages.map(lang => (
                       <button
                         key={lang}
-                        onClick={() => { setAppLanguage(lang); setShowLangMenu(false); }}
+                        onClick={() => handleTranslate(lang)}
                         className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-800 ${appLanguage === lang ? "text-cyan-400 font-bold" : "text-slate-300"}`}
                       >
                         {lang}
@@ -217,6 +237,7 @@ export function Header() {
     </>
   );
 }
+
 
 
 
