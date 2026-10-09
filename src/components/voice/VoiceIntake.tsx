@@ -218,6 +218,13 @@ export function VoiceIntake() {
   const clientRef = React.useRef<GeminiLiveClient | null>(null);
 
   React.useEffect(() => {
+    if (sessionStorage.getItem("autostart_voice") === "true") {
+      sessionStorage.removeItem("autostart_voice");
+      setTimeout(() => {
+        startConversation();
+      }, 800);
+    }
+    
     const client = new GeminiLiveClient({
       onStateChange: setState,
       onMessagesChange: setConversation,
@@ -420,6 +427,8 @@ export function VoiceIntake() {
     </div>
   );
 }
+
+
 
 
 

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCareFlow } from "@/context/CareFlowContext";
 import {
-  Globe, ChevronDown,
+  ChevronDown,
   Bell,
   User,
   Menu,
@@ -23,7 +23,17 @@ export function Header() {
   const { appLanguage, setAppLanguage } = useCareFlow();
   const [showLangMenu, setShowLangMenu] = useState(false);
   
-  const langMap: Record<string, string> = { "English": "en", "Hindi": "hi", "Bengali": "bn", "Marathi": "mr", "Gujarati": "gu", "Punjabi": "pa", "Odia": "or", "Assamese": "as", "Kashmiri": "ks" };
+  const langMap: Record<string, {code: string, native: string}> = {
+    "English": {code: "en", native: "English"},
+    "Hindi": {code: "hi", native: "?????"},
+    "Bengali": {code: "bn", native: "?????"},
+    "Marathi": {code: "mr", native: "?????"},
+    "Gujarati": {code: "gu", native: "???????"},
+    "Punjabi": {code: "pa", native: "??????"},
+    "Odia": {code: "or", native: "?????"},
+    "Assamese": {code: "as", native: "???????"},
+    "Kashmiri": {code: "ks", native: "?????"}
+  };
   const languages = Object.keys(langMap);
 
   React.useEffect(() => {
@@ -38,8 +48,11 @@ export function Header() {
     localStorage.setItem("careflow_lang", lang);
     setShowLangMenu(false);
     
-    // Google Translate Cookie Hack
-    const code = langMap[lang];
+    if (window.location.pathname === "/" || window.location.pathname === "/voice") {
+      sessionStorage.setItem("autostart_voice", "true");
+    }
+    
+    const code = langMap[lang].code;
     document.cookie = `googtrans=/en/${code}; path=/`;
     document.cookie = `googtrans=/en/${code}; path=/; domain=${window.location.hostname}`;
     window.location.reload();
@@ -118,8 +131,7 @@ export function Header() {
                   className="flex items-center gap-1 hover:text-white transition-colors bg-white/5 px-2 py-1 rounded-md"
                   title="Translate Page"
                 >
-                  <Globe className="w-5 h-5 text-cyan-400" />
-                  <span className="text-xs font-bold uppercase">{appLanguage.substring(0,3)}</span>
+                  <span className="text-sm font-bold text-cyan-400">{langMap[appLanguage]?.native || "English"}</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
                 {showLangMenu && (
@@ -130,7 +142,7 @@ export function Header() {
                         onClick={() => handleTranslate(lang)}
                         className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-800 ${appLanguage === lang ? "text-cyan-400 font-bold" : "text-slate-300"}`}
                       >
-                        {lang}
+                        {langMap[lang].native}
                       </button>
                     ))}
                   </div>
@@ -184,7 +196,7 @@ export function Header() {
             </button>
             <div className="h-[1px] bg-white/5 my-2"></div>
             <div className="flex gap-6 text-slate-400 pb-2">
-              <Globe className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm font-bold text-cyan-400">{langMap[appLanguage]?.native || "English"}</span>
               <Bell className="w-5 h-5" />
               <Link href="/login" className="hover:text-white transition-colors" title="Login / Sign up"><User className="w-5 h-5" /></Link>
             </div>
@@ -237,6 +249,8 @@ export function Header() {
     </>
   );
 }
+
+
 
 
 
