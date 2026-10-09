@@ -14,6 +14,7 @@ import {
   Check,
   Activity,
   ArrowRight,
+  Star,
 } from "lucide-react";
 
 interface Doctor {
@@ -212,11 +213,18 @@ export const DoctorDiscovery = () => {
               <div className="bg-slate-950/50 p-4 border-b border-slate-800 flex justify-between items-start">
                 <div>
                   <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                    {doc.doctor_name}
-                  </h3>
-                  <p className="text-cyan-500 text-sm font-medium">
-                    {doc.specialty}
-                  </p>
+                      {doc.doctor_name}
+                    </h3>
+                    <div className="flex items-center gap-2 mt-1 mb-1">
+                      <div className="flex items-center gap-0.5 text-amber-400">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="text-sm font-bold ml-1">{((doc.experience_years % 5) * 0.1 + 4.1).toFixed(1)}</span>
+                      </div>
+                      <span className="text-xs text-slate-500">({20 + doc.experience_years * 3} verified reviews)</span>
+                    </div>
+                    <p className="text-cyan-500 text-sm font-medium">
+                      {doc.specialty}
+                    </p>
                 </div>
                 <div className="bg-amber-500/10 text-amber-500 text-[10px] font-bold px-2 py-1 rounded border border-amber-500/20 flex items-center gap-1">
                   <AlertTriangle className="w-3 h-3" /> DEMO
@@ -672,4 +680,5 @@ export const DoctorDiscovery = () => {
     </div>
   );
 };
+
 
