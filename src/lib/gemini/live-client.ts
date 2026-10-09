@@ -8,6 +8,7 @@ interface GeminiLiveCallbacks {
   onStateChange: (state: VoiceSessionState) => void;
   onMessagesChange: (messages: VoiceMessage[]) => void;
   onError: (message: string) => void;
+  systemInstruction?: string;
 }
 
 interface GeminiLiveTokenResponse {
@@ -403,3 +404,5 @@ export class GeminiLiveClient {
     }
   }
 }
+
+
