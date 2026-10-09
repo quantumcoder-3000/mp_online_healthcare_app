@@ -25,6 +25,7 @@ interface Doctor {
   facility_name: string;
   pincode_demo: string;
   registration_id_demo?: string;
+  experience_years: number;
   virtual_availability: string;
   physical_availability: string;
 }

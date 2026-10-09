@@ -25,14 +25,14 @@ export function Header() {
   
   const langMap: Record<string, {code: string, native: string}> = {
     "English": {code: "en", native: "English"},
-    "Hindi": {code: "hi", native: "?????"},
-    "Bengali": {code: "bn", native: "?????"},
-    "Marathi": {code: "mr", native: "?????"},
-    "Gujarati": {code: "gu", native: "???????"},
-    "Punjabi": {code: "pa", native: "??????"},
-    "Odia": {code: "or", native: "?????"},
-    "Assamese": {code: "as", native: "???????"},
-    "Kashmiri": {code: "ks", native: "?????"}
+    "Hindi": {code: "hi", native: "हिंदी"},
+    "Bengali": {code: "bn", native: "বাংলা"},
+    "Marathi": {code: "mr", native: "मराठी"},
+    "Gujarati": {code: "gu", native: "ગુજરાતી"},
+    "Punjabi": {code: "pa", native: "ਪੰਜਾਬੀ"},
+    "Odia": {code: "or", native: "ଓଡ଼ିଆ"},
+    "Assamese": {code: "as", native: "অসমীয়া"},
+    "Kashmiri": {code: "ks", native: "کأشُر"}
   };
   const languages = Object.keys(langMap);
 
