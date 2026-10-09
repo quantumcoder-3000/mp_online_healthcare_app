@@ -65,6 +65,8 @@ interface CareFlowContextType {
   updateHospitalER: (hospitalId: string, delta: number) => void;
   toggleSpecialist: (hospitalId: string, specialty: string) => void;
   refreshRouting: () => Promise<void>;
+  appLanguage: string;
+  setAppLanguage: (lang: string) => void;
 }
 
 const CareFlowContext = createContext<CareFlowContextType | null>(null);
@@ -104,6 +106,7 @@ export const CareFlowProvider: React.FC<{ children: React.ReactNode }> = ({
   );
   const [isRoutingLoading, setIsRoutingLoading] = useState<boolean>(false);
   const [isLiveRouting, setIsLiveRouting] = useState<boolean>(false);
+  const [appLanguage, setAppLanguage] = useState("English");
 
   // Keep references for tick loop
   const ambulancesRef = useRef(ambulances);
@@ -629,6 +632,8 @@ export const CareFlowProvider: React.FC<{ children: React.ReactNode }> = ({
         updateHospitalER,
         toggleSpecialist,
         refreshRouting,
+        appLanguage,
+        setAppLanguage,
       }}
     >
       {children}
