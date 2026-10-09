@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next";`nimport Script from "next/script";
 import "./globals.css";
 import { CareFlowProvider } from "@/context/CareFlowContext";
 import { PrescriptionProvider } from "@/context/PrescriptionContext";
@@ -18,20 +18,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: "en", autoDisplay: false}, "google_translate_element");
-              }
-            `,
-          }}
-        />
-      </head>
+      <head></head>
       <body className="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased">
+        <div id="google_translate_element" style={{ display: "none" }}></div>
+        <Script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" strategy="afterInteractive" />
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: "en", autoDisplay: false}, "google_translate_element");
+            }
+          `}
+        </Script>
         <CareFlowProvider>
           <PrescriptionProvider>
                         <Header />
@@ -45,5 +42,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
