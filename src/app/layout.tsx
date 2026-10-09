@@ -1,4 +1,5 @@
-import type { Metadata } from "next";`nimport Script from "next/script";
+import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { CareFlowProvider } from "@/context/CareFlowContext";
 import { PrescriptionProvider } from "@/context/PrescriptionContext";
@@ -42,6 +43,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
 
