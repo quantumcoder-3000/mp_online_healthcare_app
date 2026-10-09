@@ -71,10 +71,14 @@ export default function AmbulanceFleetPage() {
                   ({assignedAmbulance.crew_type})
                 </span>
               </h3>
-              <p className="text-xs text-slate-300 mt-0.5">
-                Case: <strong className="text-white">{activeEmergency.intake.chiefComplaint}</strong>
-              </p>
-            </div>
+              <p className="text-xs text-slate-300 mt-0.5 mb-2">
+                  Case: <strong className="text-white">{activeEmergency.intake.chiefComplaint}</strong>
+                </p>
+                <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-medium">
+                  <Shield className="w-3.5 h-3.5" />
+                  Distributed Bed Lock: 1 ICU Bed secured at {recommendation.recommendedHospital.name} to prevent overbooking.
+                </div>
+              </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <div className="p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs">
@@ -142,3 +146,4 @@ export default function AmbulanceFleetPage() {
     </div>
   );
 }
+
