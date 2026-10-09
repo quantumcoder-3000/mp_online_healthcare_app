@@ -60,18 +60,7 @@ export default function Home() {
 
         {/* Hero Right Visuals (AI Voice Sphere) */}
         <div className="flex-1 relative w-full flex items-center justify-center h-[400px]">
-          {/* Status Badge */}
-          <div className="absolute top-0 right-0 lg:right-10 z-30 bg-[#1F2833] border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-2xl">
-             <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-               <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
-             </div>
-             <div>
-               <div className="text-xs text-slate-400">System Status</div>
-               <div className="text-sm font-bold text-white flex items-center gap-1">
-                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Live Routing Active
-               </div>
-             </div>
-          </div>
+          
 
           {/* Glowing Sphere */}
           <div className="relative w-80 h-80 flex items-center justify-center">
