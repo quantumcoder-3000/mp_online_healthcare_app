@@ -337,10 +337,14 @@ export function VoiceIntake() {
 
       setIntake(payload.data);
       setSummaryStatus("idle");
-      // Trigger dynamic integration!
+      const aiSaidAmbulance = conversation.some(
+        msg => msg.role === "assistant" && (msg.content.toLowerCase().includes("ambulance") || msg.content.toLowerCase().includes("emergency protocol"))
+      );
+
       const triageCategory = evaluateRedFlags(payload.data);
       payload.data.triageCategory = triageCategory;
-      if (triageCategory === "RED") {
+
+      if (triageCategory === "RED" || aiSaidAmbulance) {
         processEmergency(payload.data);
         router.push("/ambulance");
       } else {
