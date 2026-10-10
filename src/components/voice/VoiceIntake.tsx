@@ -240,8 +240,19 @@ export function VoiceIntake() {
   const [agentError, setAgentError] = React.useState<string | null>(null);
   const clientRef = React.useRef<GeminiLiveClient | null>(null);
 
-  const handleSendText = React.useCallback((text: string) => {
-    clientRef.current?.sendText(text);
+  const handleSendText = React.useCallback(async (text: string) => {
+    // If we are completely idle, auto-start the session
+    if (clientRef.current && (clientRef.current as any).ws?.readyState !== 1) {
+      await startConversation();
+    } else if (!clientRef.current) {
+      // clientRef might not even exist if the component just mounted
+      await startConversation();
+    }
+    
+    // Give it a tiny buffer to ensure the socket state matches if it just opened
+    setTimeout(() => {
+      clientRef.current?.sendText(text);
+    }, 100);
   }, []);
 
   React.useEffect(() => {
@@ -376,7 +387,7 @@ export function VoiceIntake() {
         <ConversationPanel 
           conversation={conversation} 
           onSendText={handleSendText} 
-          disabled={state !== "listening" && state !== "speaking"} 
+          disabled={state === "connecting"} 
         />
 
         <section className="panel workflow-panel">
