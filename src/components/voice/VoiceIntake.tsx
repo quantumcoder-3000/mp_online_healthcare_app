@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { Send } from "lucide-react";
 
 import { GeminiLiveClient } from "@/lib/gemini/live-client";
 import { useCareFlow } from "@/context/CareFlowContext";
@@ -86,7 +87,9 @@ function IntakeCard({ intake }: { intake: PatientIntake }) {
   );
 }
 
-function ConversationPanel({ conversation }: { conversation: VoiceMessage[] }) {
+function ConversationPanel({ conversation, onSendText, disabled }: { conversation: VoiceMessage[], onSendText: (t: string) => void, disabled: boolean }) {
+  const [chat, setChat] = React.useState("");
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); if (chat.trim() && !disabled) { onSendText(chat); setChat(""); } };
   return (
     <section className="panel conversation-panel">
       <div className="panel-heading">
@@ -118,6 +121,26 @@ function ConversationPanel({ conversation }: { conversation: VoiceMessage[] }) {
             </div>
           ))
         )}
+      </div>
+
+      <div className="mt-4 border-t border-slate-800 pt-4 px-4 pb-4">
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <input 
+            type="text" 
+            value={chat}
+            onChange={(e) => setChat(e.target.value)}
+            disabled={disabled}
+            placeholder={disabled ? "Start a conversation to type..." : "Type your response here... (Deaf & Mute accessible)"}
+            className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-cyan-500 disabled:opacity-50"
+          />
+          <button 
+            type="submit" 
+            disabled={disabled || !chat.trim()}
+            className="bg-cyan-600 hover:bg-cyan-500 text-white p-2 rounded-lg disabled:opacity-50 transition-colors flex items-center justify-center"
+          >
+            <Send className="w-4 h-4" />
+          </button>
+        </form>
       </div>
     </section>
   );
@@ -216,6 +239,10 @@ export function VoiceIntake() {
   const [summaryError, setSummaryError] = React.useState<string | null>(null);
   const [agentError, setAgentError] = React.useState<string | null>(null);
   const clientRef = React.useRef<GeminiLiveClient | null>(null);
+
+  const handleSendText = React.useCallback((text: string) => {
+    clientRef.current?.sendText(text);
+  }, []);
 
   React.useEffect(() => {
     if (sessionStorage.getItem("autostart_voice") === "true") {
@@ -346,7 +373,11 @@ export function VoiceIntake() {
       </div>
 
       <div className="content-grid">
-        <ConversationPanel conversation={conversation} />
+        <ConversationPanel 
+          conversation={conversation} 
+          onSendText={handleSendText} 
+          disabled={state !== "listening" && state !== "speaking"} 
+        />
 
         <section className="panel workflow-panel">
           <div className="panel-heading">

@@ -146,6 +146,28 @@ export class GeminiLiveClient {
     this.callbacks.onMessagesChange([]);
   }
 
+  sendText(text: string): void {
+    if (!this.ws || this.ws.readyState !== 1) return;
+    this.messages = [
+      ...this.messages,
+      { id: crypto.randomUUID(), role: "user", content: text },
+    ];
+    this.callbacks.onMessagesChange(this.messages);
+    this.ws.send(
+      JSON.stringify({
+        clientContent: {
+          turns: [
+            {
+              role: "user",
+              parts: [{ text }],
+            },
+          ],
+          turnComplete: true,
+        },
+      })
+    );
+  }
+
   private async prepareAudio(): Promise<void> {
     if (!navigator.mediaDevices?.getUserMedia) {
       throw new Error("This browser does not support microphone access.");
@@ -404,5 +426,6 @@ export class GeminiLiveClient {
     }
   }
 }
+
 
 
